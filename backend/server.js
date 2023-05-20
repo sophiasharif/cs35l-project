@@ -3,6 +3,10 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 
+// route handlers
+const userRoutes = require('./routes/user')
+
+// express app
 const app = express();
 
 app.get("/", (req, res, next) => {
