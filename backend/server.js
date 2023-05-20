@@ -13,6 +13,9 @@ app.get("/", (req, res, next) => {
   res.send("<h1> Hello Friemacs! </h1>");
 });
 
+// routes
+app.use('/api/user', userRoutes)
+
 // connect to mongo
 mongoose
   .connect(process.env.MONGO_URI)
