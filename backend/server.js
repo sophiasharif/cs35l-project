@@ -8,6 +8,7 @@ const userRoutes = require('./routes/user')
 
 // express app
 const app = express();
+app.use(express.json()); // Parse JSON in the request body
 
 app.get("/", (req, res, next) => {
   res.send("<h1> Hello Friemacs! </h1>");
