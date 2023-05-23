@@ -5,6 +5,7 @@ import "./App.css";
 // import pages & components
 import Home from "./pages/Home";
 import NavBar from "./components/NavBar";
+import Survey from "./pages/Survey";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -16,6 +17,7 @@ function App() {
         <div className="pages">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/Survey" element={<Survey />} />
           </Routes>
         </div>
       </BrowserRouter>

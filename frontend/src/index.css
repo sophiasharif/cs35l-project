@@ -17,10 +17,14 @@
 a {
   font-weight: 500;
   color: #646cff;
+  opacity: 50%;
   text-decoration: inherit;
+  display: inline-block;
+  margin-right: 1em;
 }
 a:hover {
   color: #535bf2;
+  opacity: 100%;
 }
 
 body {
@@ -29,11 +33,40 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background: black;
+  color: white;
 }
 
 h1 {
+  font-size: 2.2em;
+  line-height: 1.1;
+  margin-bottom: 0;
+}
+
+h2 {
+  padding: 0;
   font-size: 3.2em;
   line-height: 1.1;
+  animation: color-change 10s infinite;
+}
+
+@keyframes color-change {
+  0% { color :  #ff2db9}
+  10% { color : #ba43ff }
+  20% { color : #683ffc} 
+  30% { color : #4545f9} 
+  40% { color : #34a7ff} 
+  50% { color : #3EDEBF }
+  60% { color:  #3ede4e }
+  70% { color : #f0dd05 }
+  80% { color : #f96c14 }
+  90% { color : #ff3c00 }
+  100% { color : #ff0051 }
+}
+
+h3 {
+  margin-top: -1.5em;
+  margin-bottom: 2em;
 }
 
 button {

@@ -1,0 +1,24 @@
+datalist {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    justify-content: space-between;
+    writing-mode: horizontal-tb;
+    width: 200px;
+}
+
+fieldset {
+    border: none;
+    margin-bottom: 1em;
+}
+
+input[type="range"] {
+    width: 200px;
+    margin: auto;
+}
+
+p {
+    font-weight: bold;
+    margin-top: 1em;
+    margin-bottom: 0;
+}
