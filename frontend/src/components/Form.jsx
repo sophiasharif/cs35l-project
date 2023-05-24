@@ -48,16 +48,6 @@ const Form = () => {
       } catch (err) {
         console.log(err);
       }
-
-      console.log(JSON.stringify({
-        q1: formData.q1,
-        q2: formData.q2,
-        q3: formData.q3,
-        q4: formData.q4,
-        q5: formData.q5,
-        q6: formData.q6,
-        q7: formData.q7
-      }))
   }
 
   return(
