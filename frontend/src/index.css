@@ -79,6 +79,7 @@ button {
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+  margin-top: 1em;
 }
 button:hover {
   box-shadow: rgb(255, 255, 255) 1px 0 20px;

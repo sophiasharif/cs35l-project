@@ -64,9 +64,7 @@ const Form = () => {
       <div>
           <form onSubmit={handleSubmit}>
               <fieldset>
-              <h2>FrieMacS: A 35L Friend Matching Survey</h2> 
-              <h3>(Because we all know we need it.)</h3>
-                <div id="q1">
+                <div className="question">
                   <p>Emacs or Vim?</p>
                   <div>
                     <input type="radio" id="Emacs" name="q1" value="Emacs" onChange={handleFormData} checked={formData.q1 === "Emacs"} required/>
@@ -77,11 +75,11 @@ const Form = () => {
                     <label htmlFor="Vim"> Vim</label><br/>
                   </div>
                 </div>
-                <div id="q2">
+                <div className="question">
                   <p>Go to Eggert lecture or skip?</p>
                   <div>
                     <input type="radio" id="go" name="q2" value="go" onChange={handleFormData} checked={formData.q2 === "go"} required/>
-                    <label htmlFor="go"> Go to lecture!</label><br/>
+                    <label htmlFor="go"> Go to lecture.</label><br/>
                   </div>
                   <div>
                     <input type="radio" id="zoom" name="q2" value="zoom" onChange={handleFormData} checked={formData.q2 === "zoom"}/>
@@ -96,7 +94,7 @@ const Form = () => {
                     <label htmlFor="confused"> You guys are going to class?</label><br/>
                   </div>
                 </div>
-                <div id="q3">
+                <div className="question">
                   <p>Get egged or berged?</p>
                   <div>
                     <input type="radio" id="eggert" name="q3" value="eggert" onChange={handleFormData} checked={formData.q3 === "eggert"} required/>
@@ -123,7 +121,7 @@ const Form = () => {
                     <label htmlFor="all"> All of the above</label><br/>
                   </div>
                 </div>
-                <div id="q4">
+                <div className="question">
                   <p>How do you take notes?</p>
                   <div>
                     <input type="radio" id="iPad" name="q4" value="iPad" onChange={handleFormData} checked={formData.q4 === "iPad"} required/>
@@ -139,10 +137,10 @@ const Form = () => {
                   </div>
                   <div>
                     <input type="radio" id="no-notes" name="q4" value="no-notes" onChange={handleFormData} checked={formData.q4 === "no-notes"}/>
-                    <label htmlFor="no-notes"> Skill issue, I don't take notes.</label><br/>
+                    <label htmlFor="no-notes"> I don't take notes</label><br/>
                   </div>
                 </div>
-                <div id="q5">
+                <div className="question">
                   <p>Favorite 35l assignment?</p>
                   <select onChange={handleFormData} name="q5" value={formData.q5} required>
                     <option value="files">Files and Shell Scripting</option>
@@ -153,7 +151,7 @@ const Form = () => {
                     <option value="repo">Git Repository Organization</option>
                   </select>
                 </div>
-                <div id="q6">
+                <div className="question">
                   <p>Does pineapple belong on Piazza?</p>
                   <div>
                     <input type="radio" id="yes" name="q6" value="yes" onChange={handleFormData} checked={formData.q6 === "yes"}/>
@@ -161,10 +159,10 @@ const Form = () => {
                   </div>
                   <div>
                     <input type="radio" id="no" name="q6" value="no" onChange={handleFormData} checked={formData.q6 === "no"}/>
-                    <label htmlFor="no"> Nothing belongs on Piazza, including CS35l. It looks like it was built in the 2nd century.</label><br/>
+                    <label htmlFor="no"> Nothing belongs on Piazza, including 35l. It looks like it was built in 200 BC.</label><br/>
                   </div>
                 </div>
-                <div id="q7">
+                <div className="question">
                 <p>Give Eggert a Bruinwalk rating.</p>
                   <div>
                     <input type="range" id="rating" min="1" max="5" step="0.5" name="q7" list="values" onChange={handleFormData} value={formData.q7} required></input>
