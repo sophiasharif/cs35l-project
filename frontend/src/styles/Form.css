@@ -21,4 +21,17 @@ p {
     font-weight: bold;
     margin-top: 1em;
     margin-bottom: 0;
+    text-shadow: rgb(255, 255, 255) 1px 0 10px;
+}
+
+select {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.2em 0.6em;
+  font-size: 0.8em;
+  font-weight: bold;
+  font-family: inherit;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.25s;
 }
