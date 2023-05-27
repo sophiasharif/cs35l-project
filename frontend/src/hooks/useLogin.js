@@ -6,11 +6,11 @@ export function useSignup() {
   const [isLoading, setIsLoading] = useState(null);
   const { dispatch } = useAuthContext();
 
-  const signup = async (email, password) => {
+  const login = async (email, password) => {
     setIsLoading(true);
     setError(null);
 
-    const response = await fetch("/api/user/signup", {
+    const response = await fetch("/api/user/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
@@ -33,5 +33,5 @@ export function useSignup() {
     }
   };
 
-  return { signup, isLoading, error };
+  return { login, isLoading, error };
 }
