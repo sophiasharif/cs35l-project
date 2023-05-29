@@ -1,17 +1,37 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const surveySchema = new Schema({ //specifies which fields are required.
-    questionId: {                   //and the types they are
-        type: Number,
+// Define the schema for the document
+const surveySchema = new mongoose.Schema({
+    q1: {
+        type: String,
         required: true
     },
-    selection: {
-        type: Number,
+    q2: {
+        type: String,
         required: true
-    } 
-}, {timestamps: true});
-
+    },
+    q3: {
+        type: String,
+        required: true
+    },
+    q4: {
+        type: String,
+        required: true
+    },
+    q5: {
+        type: String,
+        required: true
+    },
+    q6: {
+        type: String,
+        required: true
+    },
+    q7: {
+        type: String,
+        required: true
+    }
+  });
 //a model applys a schema to something
 
 module.exports = mongoose.model('Response', surveySchema);
