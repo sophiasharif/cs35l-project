@@ -17,7 +17,12 @@ function NavBar() {
                 <Link to='/survey' >
                     <h1>Survey</h1>
                 </Link>
-                <button onClick={handleClick}> Log out</button>
+                <Link to='/login' >
+                    <h1>Login</h1>
+                </Link>
+                <Link onClick={handleClick}>
+                    <h1>Logout</h1>
+                </Link>
             </div>
         </header>
     )
