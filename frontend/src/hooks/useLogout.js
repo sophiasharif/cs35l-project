@@ -1,7 +1,7 @@
 import { useAuthContext } from "./useAuthContext";
 
-export function useSignup() {
-  const { dispatch } = useAuthContext;
+export function useLogout() {
+  const { dispatch } = useAuthContext();
 
   const logout = () => {
     // remove user from storage

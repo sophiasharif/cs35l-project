@@ -5,7 +5,7 @@
     const context = useContext(AuthContext)
 
     if (!context) {
-        throw Error("useAuthContext must be used inside AuthContextProvide.")
+        throw Error("useAuthContext must be used inside AuthContextProvider.")
     }
 
     return context
