@@ -4,10 +4,26 @@ const Survey = require('../models/surveyModel')
 const getAllResponses = async (req, res) => {
     //Workout.find({}) finds all workouts and returns them as an array.
     //then sorts with ascending questionId numbers.
-    const responses = await Survey.find({}).sort({questionId: 1});
+    const responses = await Survey.find({}).sort({email: 1});
     res.status(200).json(responses);
 }
 //get single response
+const getResponse = async (req, res) => {
+    const my_email = req.params.email;
+    // Search for the matching email in the database
+    // if want patch and delete, use functions
+    // findOneAndDelete() and findOneAndUpdate({email: my_email}, {...req.body}) respectively
+    Survey.findOne({ email: my_email })
+        .then((surveyResponse) => {
+        if (surveyResponse) {
+            res.status(200).json(surveyResponse);
+        } else {
+            res.status(404).json({ error: 'Survey response not found' });
+        }
+        }).catch((error) => {
+        res.status(500).json({ error: error.message });
+        });
+}
 //post new response
 const createResponse = async (req, res) => {
     console.log(req.body);
@@ -28,5 +44,6 @@ const createResponse = async (req, res) => {
 
 module.exports = {
     getAllResponses,
+    getResponse,
     createResponse
 }
