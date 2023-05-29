@@ -1,0 +1,61 @@
+datalist {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    writing-mode: horizontal-tb;
+    width: 200px;
+    margin-bottom: 0.5em;
+    color: black;
+    font-family: 'Times New Roman';
+}
+
+option {
+    margin-top: -0.5em;
+}
+
+fieldset {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin: auto;
+    padding-left: 1.5em;
+    width: 600px;
+    position: center;
+    box-shadow: white 1px 0 20px;
+    background-color: white;
+}
+
+input[type="range"] {
+    width: 200px;
+    margin: auto;
+}
+
+p {
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-top: 0.8em;
+    font-family: 'Times New Roman';
+    color: black;
+    font-size: 1.5em;
+}
+
+label {
+    font-family: 'Times New Roman';
+    font-size: 1em;
+    color: black;
+}
+
+div.question {
+    text-align: left;
+}
+
+select {
+  border-radius: 8px;
+  border: 1px solid black;
+  padding: 0.2em 0.6em;
+  font-size: 1em;
+  font-weight: bold;
+  font-family: 'Times New Roman';
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}

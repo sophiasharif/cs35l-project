@@ -1,7 +1,15 @@
+import {useEffect} from 'react'
+
 function Home() {
+
+    useEffect(() => {
+        document.title = "FrieMacS"
+      }, []);
+
     return (
         <div className="home">
-            <h2>Home</h2>
+            <h2>FrieMacS: A 35L Friend Matching Survey</h2> 
+            <h3>(Because we all know we need it.)</h3>
         </div>
     )
 }
