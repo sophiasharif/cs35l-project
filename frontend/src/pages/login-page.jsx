@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLogin } from "../hooks/useLogin";
-import '../styles/Login.css'
+import "../styles/Login.css"
 
 const Login = () => {
   useEffect(() => {
@@ -35,23 +35,23 @@ const Login = () => {
   };
 
   return (
-    <div class="loginForm">
-      <h1>Login Page</h1>
-      <br></br>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Email: </label>
-          <input type="email" value={email} onChange={handleEmailChange} required />
-        </div>
-        <div>
-          <label>Password: </label>
-          <input type="password" value={password} onChange={handlePasswordChange} required />
-        </div>
-        <button type="submit" disabled={isLoading}>Login</button>
-        {error && <div>{error}</div>}
-      </form>
+    <div>
+      <fieldset id="login_field">
+        <h1>Welcome back!</h1>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <input type="email" value={email} onChange={handleEmailChange} placeholder="Email" required />
+          </div>
+          <div>
+            <input type="password" value={password} onChange={handlePasswordChange} placeholder="Password" required />
+          </div>
+          <button type="submit" disabled={isLoading}>Login</button>
+          {error && <div>{error}</div>}
+        </form>
+        <a id="signup_redirect" href="/signup">Don't have an account? Sign up here!</a>
+      </fieldset>
     </div>
-  );
-};
+  )
+}
 
 export default Login;
