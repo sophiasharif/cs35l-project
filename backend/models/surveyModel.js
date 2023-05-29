@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-
 const Schema = mongoose.Schema;
+
 const surveySchema = new Schema({ //specifies which fields are required.
     questionId: {                   //and the types they are
         type: Number,
