@@ -11,14 +11,14 @@ const getAllResponses = async (req, res) => {
 //post new response
 const createResponse = async (req, res) => {
     console.log(req.body);
-    const {q1, q2, q3, q4, q5, q6, q7} = req.body; //take the json file
+    const {email, name, q1, q2, q3, q4, q5, q6, q7} = req.body; //take the json file
                                             //and destructure it.
     try{
         //try to create a new document  
         // recall that MongoDB is a "Document-based" database
         // from the object that we got
-        const workout = await Survey.create({q1, q2, q3, q4, q5, q6, q7});
-        res.status(200).json(workout);
+        const response = await Survey.create({email, name, q1, q2, q3, q4, q5, q6, q7});
+        res.status(200).json(response);
     }catch(error){
         res.status(400).json({error: error.message})
     }
