@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import '../styles/Login.css'
 
+const Signup = () => {
 
-const SignupPage = () => {
+  useEffect(() => {
+    document.title = "FrieMacS - Sign Up"
+  }, []);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -46,7 +51,7 @@ const SignupPage = () => {
   };
 
   return (
-    <div>
+    <div class="loginForm">
         <h1>Signup Page</h1>
         <form onSubmit={handleSubmit}>
             <div>
@@ -92,4 +97,4 @@ const SignupPage = () => {
   );
 };
 
-export default SignupPage;
+export default Signup;

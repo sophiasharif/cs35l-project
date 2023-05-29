@@ -1,0 +1,7 @@
+div.loginForm label {
+    color: white;
+}
+
+div.loginForm form {
+    align-items:left;
+}

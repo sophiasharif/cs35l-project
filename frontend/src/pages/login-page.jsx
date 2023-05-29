@@ -1,6 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import '../styles/Login.css'
 
-const LoginPage = () => {
+const Login = () => {
+  useEffect(() => {
+    document.title = "FrieMacS - Log In"
+  }, []);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -26,7 +31,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div>
+    <div class="loginForm">
       <h1>Login Page</h1>
       <form onSubmit={handleSubmit}>
         <div>
@@ -43,4 +48,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default Login;
