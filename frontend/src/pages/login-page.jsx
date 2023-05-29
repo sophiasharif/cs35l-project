@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { useLogin } from "../hooks/useLogin";
 import "../styles/Login.css"
 
 const LoginPage = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const {login, error, isLoading} = useLogin()
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -13,17 +15,19 @@ const LoginPage = () => {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+
+    await login(email, password)
 
     // Perform login logic here with email and password
     // For this example, we'll simply log the values
-    console.log('Email:', email);
-    console.log('Password:', password);
+    console.log("Email:", email);
+    console.log("Password:", password);
 
     // Reset the form
-    setEmail('');
-    setPassword('');
+    setEmail("");
+    setPassword("");
   };
 
   return (
@@ -37,12 +41,12 @@ const LoginPage = () => {
           <div>
             <input type="password" value={password} onChange={handlePasswordChange} placeholder="Password" required />
           </div>
-          <button type="submit">Login</button>
+          <button type="submit" disabled={isLoading}>Login</button>
+          {error && <div>{error}</div>}
         </form>
         <a id="signup_redirect" href="/signup">Don't have an account? Sign up here!</a>
       </fieldset>
     </div>
-  );
-};
+  )}
 
 export default LoginPage;
