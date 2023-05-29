@@ -56,7 +56,7 @@ const SignupPage = () => {
         <form onSubmit={handleSubmit}>
             <div>
               <input 
-                type="name" 
+                type="text" 
                 value={name} 
                 onChange={handleNameChange} 
                 placeholder="Name"
@@ -65,7 +65,7 @@ const SignupPage = () => {
             </div>
             <div>
               <input 
-                type="email" 
+                type="text" 
                 value={email} 
                 onChange={handleEmailChange} 
                 placeholder="Email"
@@ -74,7 +74,7 @@ const SignupPage = () => {
             </div>
             <div>
               <input
-                type="password"
+                type="text"
                 value={password}
                 onChange={handlePasswordChange}
                 placeholder="Password"
@@ -83,7 +83,7 @@ const SignupPage = () => {
             </div>
             <div>
               <input
-                type="password"
+                type="text"
                 value={confirmPassword}
                 onChange={handleConfirmPasswordChange}
                 placeholder="Re-enter password"
@@ -91,7 +91,7 @@ const SignupPage = () => {
               />
             </div>
             {!passwordMatch && <p>Passwords do not match.</p>}
-            <button disabled={!passwordMatch || isLoading}>Submit</button>
+            <button disabled={!passwordMatch || isLoading}>Sign up</button>
         {/* error from backend */}
         {error && <div>{error}</div> } 
         </form>
