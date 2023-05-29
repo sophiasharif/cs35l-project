@@ -2,6 +2,7 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require('cors');
 
 // route handlers
 const userRoutes = require('./routes/user')
@@ -9,6 +10,7 @@ const userRoutes = require('./routes/user')
 // express app
 const app = express();
 app.use(express.json()); // Parse JSON in the request body
+app.use(cors()); // allow cross-origin resource sharing (allows frontend to communicate with backend)
 
 app.get("/", (req, res, next) => {
   res.send("<h1> Hello Friemacs! </h1>");

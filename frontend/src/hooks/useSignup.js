@@ -10,13 +10,16 @@ export function useSignup() {
     setIsLoading(true);
     setError(null);
 
-    const response = await fetch("/api/user/signup", {
+    const response = await fetch("http://localhost:3000/api/user/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
     });
+    console.log('RESPONSE \n', response)
 
     const json = await response.json();
+
+    console.log('JSON\n', json)
 
     if (!response.ok) {
       setIsLoading(false);
