@@ -3,35 +3,22 @@ const Schema = mongoose.Schema;
 
 // Define the schema for the document
 const surveySchema = new mongoose.Schema({
-    q1: {
-        type: String,
-        required: true
-    },
-    q2: {
-        type: String,
-        required: true
-    },
-    q3: {
-        type: String,
-        required: true
-    },
-    q4: {
-        type: String,
-        required: true
-    },
-    q5: {
-        type: String,
-        required: true
-    },
-    q6: {
-        type: String,
-        required: true
-    },
-    q7: {
-        type: String,
-        required: true
-    }
-  });
+    email: String,
+    name: String,
+    q1: String,    
+    q1: String,
+    q2: String,
+    q3: String,
+    q4: String,
+    q5: String,
+    q6: String,
+    q7: String,
+    },   
+    { // Schema-level options
+        required: true,
+        strict: 'throw'
+      }
+  );
 //a model applys a schema to something
 
 module.exports = mongoose.model('Response', surveySchema);

@@ -2,17 +2,14 @@ const express = require('express');
 const router = express.Router();
 const {
     getAllResponses,
+    getResponse,
     createResponse
 } = require("../controllers/surveyController");
  
 //get all survey responses
 router.get('/', getAllResponses);
 //get single user's survey response
-router.get('/:id', (req, res) => {
-    res.json(
-        {mssg: "GET single user's response"}
-    );
-})
+router.get('/:email', getResponse);
 //post a user's survey response
 router.post('/', createResponse);
 
