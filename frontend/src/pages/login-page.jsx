@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from 'react';
 import { useLogin } from "../hooks/useLogin";
 import "../styles/Login.css"
 
-const LoginPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const {login, error, isLoading} = useLogin()
+const Login = () => {
+  useEffect(() => {
+    document.title = "FrieMacS - Log In"
+  }, []);
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const {login, error, isLoading} = useLogin();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -47,6 +51,7 @@ const LoginPage = () => {
         <a id="signup_redirect" href="/signup">Don't have an account? Sign up here!</a>
       </fieldset>
     </div>
-  )}
+  )
+}
 
-export default LoginPage;
+export default Login;

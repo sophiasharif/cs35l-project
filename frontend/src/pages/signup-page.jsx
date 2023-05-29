@@ -1,12 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import { useSignup } from "../hooks/useSignup";
-import "../styles/Login.css"
+import "../styles/Login.css";
 
+const Signup = () => {
 
-const SignupPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  useEffect(() => {
+    document.title = "FrieMacS - Sign Up"
+  }, []);
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
   const [passwordMatch, setPasswordMatch] = useState(true);
   const [name, setName] = useState("");
   const {signup, error, isLoading} = useSignup();
@@ -53,6 +58,7 @@ const SignupPage = () => {
     <div>
       <fieldset id="login_field">
         <h1>Join FrieMacS</h1>
+        <br></br>
         <form onSubmit={handleSubmit}>
             <div>
               <input 
@@ -100,4 +106,4 @@ const SignupPage = () => {
   );
 };
 
-export default SignupPage;
+export default Signup;
