@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import "../styles/Login.css"
 
 
 const SignupPage = () => {
@@ -47,47 +48,49 @@ const SignupPage = () => {
 
   return (
     <div>
-        <h1>Signup Page</h1>
+      <fieldset id="login_field">
+        <h1>Join FrieMacS</h1>
         <form onSubmit={handleSubmit}>
             <div>
-                <label>Email:</label>
-              <input 
-                type="email" 
-                value={email} 
-                onChange={handleEmailChange} 
-                required 
-              />
-            </div>
-            <div>
-              <label>Password:</label>
-              <input
-                type="password"
-                value={password}
-                onChange={handlePasswordChange}
-                required
-              />
-            </div>
-            <div>
-              <label>Confirm Password:</label>
-              <input
-                type="password"
-                value={confirmPassword}
-                onChange={handleConfirmPasswordChange}
-                required
-              />
-            </div>
-            <div>
-                <label>Name:</label>
               <input 
                 type="name" 
                 value={name} 
                 onChange={handleNameChange} 
+                placeholder="Name"
                 required 
+              />
+            </div>
+            <div>
+              <input 
+                type="email" 
+                value={email} 
+                onChange={handleEmailChange} 
+                placeholder="Email"
+                required 
+              />
+            </div>
+            <div>
+              <input
+                type="password"
+                value={password}
+                onChange={handlePasswordChange}
+                placeholder="Password"
+                required
+              />
+            </div>
+            <div>
+              <input
+                type="password"
+                value={confirmPassword}
+                onChange={handleConfirmPasswordChange}
+                placeholder="Re-enter password"
+                required
               />
             </div>
             {!passwordMatch && <p>Passwords do not match.</p>}
             <button disabled={!passwordMatch}>Submit</button>
         </form>
+      </fieldset>
     </div>
   );
 };

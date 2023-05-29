@@ -10,6 +10,9 @@ function NavBar() {
                 <Link to='/survey' >
                     <h1>Survey</h1>
                 </Link>
+                <Link to='/login' >
+                    <h1>Login</h1>
+                </Link>
             </div>
         </header>
     )
