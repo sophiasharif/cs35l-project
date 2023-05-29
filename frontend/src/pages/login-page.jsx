@@ -33,13 +33,14 @@ const Login = () => {
   return (
     <div class="loginForm">
       <h1>Login Page</h1>
+      <br></br>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Email:</label>
+          <label>Email: </label>
           <input type="email" value={email} onChange={handleEmailChange} required />
         </div>
         <div>
-          <label>Password:</label>
+          <label>Password: </label>
           <input type="password" value={password} onChange={handlePasswordChange} required />
         </div>
         <button type="submit">Login</button>

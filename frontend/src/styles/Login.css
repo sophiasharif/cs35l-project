@@ -3,5 +3,6 @@ div.loginForm label {
 }
 
 div.loginForm form {
-    align-items:left;
+    text-align: right;
+    margin-right: 33%;
 }

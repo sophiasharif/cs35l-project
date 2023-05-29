@@ -53,9 +53,10 @@ const Signup = () => {
   return (
     <div class="loginForm">
         <h1>Signup Page</h1>
+        <br></br>
         <form onSubmit={handleSubmit}>
             <div>
-                <label>Email:</label>
+                <label>Email: </label>
               <input 
                 type="email" 
                 value={email} 
@@ -64,7 +65,7 @@ const Signup = () => {
               />
             </div>
             <div>
-              <label>Password:</label>
+              <label>Password: </label>
               <input
                 type="password"
                 value={password}
@@ -73,7 +74,7 @@ const Signup = () => {
               />
             </div>
             <div>
-              <label>Confirm Password:</label>
+              <label>Confirm Password: </label>
               <input
                 type="password"
                 value={confirmPassword}
@@ -82,7 +83,7 @@ const Signup = () => {
               />
             </div>
             <div>
-                <label>Name:</label>
+                <label>Name: </label>
               <input 
                 type="name" 
                 value={name} 
