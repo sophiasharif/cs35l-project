@@ -1,4 +1,3 @@
-const mongoose = require("mongoose");
 const { getAllResponses } = require("../controllers/surveyController");
 
 const target = getCurrentUser(); // to be finished
