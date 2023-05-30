@@ -47,7 +47,7 @@ const Login = () => {
               <input type="text" value={email} onChange={handleEmailChange} placeholder="Email" required />
             </div>
             <div>
-              <input type="text" value={password} onChange={handlePasswordChange} placeholder="Password" required />
+              <input type="password" value={password} onChange={handlePasswordChange} placeholder="Password" required />
             </div>
             <button type="submit" disabled={isLoading}>Login</button>
             {error && <div>{error}</div>}
