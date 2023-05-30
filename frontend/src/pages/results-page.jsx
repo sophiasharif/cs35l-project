@@ -3,6 +3,7 @@ import Matches from '../components/Matches.jsx'
 import { useAuthContext } from '../hooks/useAuthContext'
 
 function Results() {
+    const matchesToDisplay = 15;
 
     const {user} = useAuthContext();
 
@@ -14,15 +15,14 @@ function Results() {
         <div>
             <h2>FrieMacS: Results</h2> 
             {user && (
-                <div>
-                    <h3>(Results will go here.)</h3>
-                    <Matches />
-                </div>
+              <div>
+                <h3>Here's {matchesToDisplay} people we found for you to befriend!</h3>
+                <Matches matchesToDisplay={matchesToDisplay} />
+              </div>
             )}
             {!user && (
                 <h1>Sorry, you can't view your results unless you're logged in.</h1>
             )}
-            
         </div>
     )
 }

@@ -1,3 +1,17 @@
+#matchTable {
+    padding: 3em;
+    margin-bottom: 1em;
+    border-color: transparent;
+    table-layout: fixed;
+    text-align: center;
+}
+
 table {
+    width: 100%;
+    color: white;
+}
+
+th, td {
+    border: 1px solid white;
     color: white;
 }
