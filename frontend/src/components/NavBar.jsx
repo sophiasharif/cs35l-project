@@ -29,6 +29,11 @@ function NavBar() {
                     <h1>Login</h1>
                     </Link>
                 )}
+                {!isAuthenticated && (
+                    <Link to='/signup'>
+                    <h1>Sign Up</h1>
+                    </Link>
+                )}
                 {isAuthenticated && (
                     <Link to='/survey'>
                         <h1>Survey</h1>
