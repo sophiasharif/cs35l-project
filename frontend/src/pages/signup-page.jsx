@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSignup } from "../hooks/useSignup";
+import { useAuthContext } from '../hooks/useAuthContext'
 import "../styles/Login.css";
 
 const Signup = () => {
@@ -7,6 +8,9 @@ const Signup = () => {
   useEffect(() => {
     document.title = "FrieMacS - Sign Up"
   }, []);
+
+  const {user} = useAuthContext();
+
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -38,25 +42,25 @@ const Signup = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    
+    await signup(email, password);
 
-    await signup(email, password)
+    if (!error) {
+      alert("Congrats! You've successfully signed up for FrieMacS.");
+    }
 
     // Perform signup logic here with email and password
     // For this example, we'll simply log the values
     console.log("Email:", email);
     console.log("Password:", password);
     console.log("Name: ", name);
-
-    // Reset the form
-    setEmail("");
-    setPassword("");
-    setConfirmPassword("");
-    setName("");
+    
   };
 
   return (
     <div>
-      <fieldset id="login_field">
+      { !user && (
+        <fieldset id="login_field">
         <h1>Join FrieMacS</h1>
         <form onSubmit={handleSubmit}>
             <div>
@@ -97,10 +101,17 @@ const Signup = () => {
             </div>
             {!passwordMatch && <p>Passwords do not match.</p>}
             <button disabled={!passwordMatch || isLoading}>Sign up</button>
-        {/* error from backend */}
-        {error && <div>{error}</div> } 
-        </form>
-      </fieldset>
+          {/* error from backend */}
+          {error && <div>{error}</div> } 
+          </form>
+        </fieldset>
+      )}
+      {user && (
+        <div>
+          <h2>You're logged in.</h2>
+          <h1>Please log out before attempting to create another account.</h1>
+        </div>
+      )}
     </div>
   );
 };
