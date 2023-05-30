@@ -20,8 +20,22 @@ option {
     padding-left: 1.5em;
     width: 600px;
     position: center;
-    box-shadow: white 1px 0 20px;
     background-color: white;
+    animation: color-change-frame 10s infinite;
+}
+
+@keyframes color-change-frame {
+  0% { box-shadow :  #ff2db9 1px 0 20px}
+  10% { box-shadow : #ba43ff 1px 0 20px}
+  20% { box-shadow : #683ffc 1px 0 20px} 
+  30% { box-shadow : #4545f9 1px 0 20px} 
+  40% { box-shadow : #34a7ff 1px 0 20px} 
+  50% { box-shadow : #3EDEBF 1px 0 20px}
+  60% { box-shadow:  #3ede4e 1px 0 20px}
+  70% { box-shadow : #f0dd05 1px 0 20px}
+  80% { box-shadow : #f96c14 1px 0 20px}
+  90% { box-shadow : #ff3c00 1px 0 20px}
+  100% { box-shadow : #ff0051 1px 0 20px}
 }
 
 input[type="range"] {
