@@ -40,10 +40,10 @@ const Login = () => {
         <h1>Welcome back!</h1>
         <form onSubmit={handleSubmit}>
           <div>
-            <input type="email" value={email} onChange={handleEmailChange} placeholder="Email" required />
+            <input type="text" value={email} onChange={handleEmailChange} placeholder="Email" required />
           </div>
           <div>
-            <input type="password" value={password} onChange={handlePasswordChange} placeholder="Password" required />
+            <input type="text" value={password} onChange={handlePasswordChange} placeholder="Password" required />
           </div>
           <button type="submit" disabled={isLoading}>Login</button>
           {error && <div>{error}</div>}
