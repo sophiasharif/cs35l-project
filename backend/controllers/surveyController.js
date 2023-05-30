@@ -26,6 +26,7 @@ const getResponse = async (req, res) => {
 }
 //post new response
 const createResponse = async (req, res) => {
+    console.log("here's the body");
     console.log(req.body);
     const {email, name, q1, q2, q3, q4, q5, q6, q7} = req.body; //take the json file
                                             //and destructure it.
