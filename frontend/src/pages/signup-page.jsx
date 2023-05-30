@@ -58,7 +58,6 @@ const Signup = () => {
     <div>
       <fieldset id="login_field">
         <h1>Join FrieMacS</h1>
-        <br></br>
         <form onSubmit={handleSubmit}>
             <div>
               <input 
