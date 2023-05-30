@@ -44,11 +44,13 @@ const Signup = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     
-    await signup(email, password);
+    const { error: check_error } = await signup(email, password);
 
-    if (!error) {
+    if (!check_error) {
       alert("Congrats! You've successfully signed up for FrieMacS.");
     }
+
+    console.log(check_error);
 
     // Perform signup logic here with email and password
     // For this example, we'll simply log the values
@@ -100,11 +102,11 @@ const Signup = () => {
                 required
               />
             </div>
-            {!passwordMatch && <p>Passwords do not match.</p>}
-            {!isPasswordValid && <p>Password must be at least 8 characters long.</p>}
-            <button disabled={!isPasswordValid || !passwordMatch || isLoading}>Submit</button>
+            {!passwordMatch && <div>Passwords do not match.</div>}
+            {!isPasswordValid && <div>Password must be at least 8 characters long.</div>}
+            <button disabled={!isPasswordValid || !passwordMatch || isLoading}>Sign up</button>
           {/* error from backend */}
-          {error && <div>{error}</div> } 
+          {error && <br></br> && <div>{error}</div>} 
           </form>
         </fieldset>
       )}
