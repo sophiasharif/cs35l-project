@@ -63,7 +63,7 @@ const Form = () => {
   return(
       <div>
           <form onSubmit={handleSubmit}>
-              <fieldset>
+              <fieldset id="survey_field">
                 <div className="question">
                   <p>Emacs or Vim?</p>
                   <div>

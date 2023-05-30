@@ -1,10 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import { useSignup } from "../hooks/useSignup";
+import "../styles/Login.css";
 
-const SignupPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+const Signup = () => {
+
+  useEffect(() => {
+    document.title = "FrieMacS - Sign Up"
+  }, []);
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
   const [passwordMatch, setPasswordMatch] = useState(true);
   const [name, setName] = useState("");
   const {signup, error, isLoading} = useSignup();
@@ -49,51 +56,54 @@ const SignupPage = () => {
 
   return (
     <div>
-      <h1>Signup Page</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={handleEmailChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={handlePasswordChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Confirm Password:</label>
-          <input
-            type="password"
-            value={confirmPassword}
-            onChange={handleConfirmPasswordChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Name:</label>
-          <input
-            type="name"
-            value={name}
-            onChange={handleNameChange}
-            required
-          />
-        </div>
-        {!passwordMatch && <p>Passwords do not match.</p>}
-        <button disabled={!passwordMatch || isLoading}>Submit</button>
+      <fieldset id="login_field">
+        <h1>Join FrieMacS</h1>
+        <br></br>
+        <form onSubmit={handleSubmit}>
+            <div>
+              <input 
+                type="text" 
+                value={name} 
+                onChange={handleNameChange} 
+                placeholder="Name"
+                required 
+              />
+            </div>
+            <div>
+              <input 
+                type="text" 
+                value={email} 
+                onChange={handleEmailChange} 
+                placeholder="Email"
+                required 
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                value={password}
+                onChange={handlePasswordChange}
+                placeholder="Password"
+                required
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                value={confirmPassword}
+                onChange={handleConfirmPasswordChange}
+                placeholder="Re-enter password"
+                required
+              />
+            </div>
+            {!passwordMatch && <p>Passwords do not match.</p>}
+            <button disabled={!passwordMatch || isLoading}>Sign up</button>
         {/* error from backend */}
         {error && <div>{error}</div> } 
-      </form>
+        </form>
+      </fieldset>
     </div>
   );
 };
 
-export default SignupPage;
+export default Signup;

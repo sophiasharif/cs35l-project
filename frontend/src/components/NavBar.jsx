@@ -14,10 +14,21 @@ function NavBar() {
                 <Link to='/' >
                     <h1>Home</h1>
                 </Link>
-                <Link to='/survey' >
+                <Link to='/login'>
+                    <h1>Login</h1>
+                </Link>
+                <Link to='/signup' >
+                    <h1>Signup</h1>
+                </Link>
+                <Link to='/survey'>
                     <h1>Survey</h1>
                 </Link>
-                <button onClick={handleClick}> Log out</button>
+                <Link to='/results'>
+                    <h1>Results</h1>
+                </Link>
+                <Link onClick={handleClick}>
+                    <h1>Logout</h1>
+                </Link>
             </div>
         </header>
     )

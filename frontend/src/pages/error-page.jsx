@@ -1,6 +1,10 @@
 import { useRouteError } from "react-router-dom";
 
-export default function ErrorPage() {
+function Error() {
+  useEffect(() => {
+    document.title = "FrEMACS - Error"
+  }, []);
+
   const error = useRouteError();
   console.error(error);
 
@@ -14,3 +18,5 @@ export default function ErrorPage() {
     </div>
   );
 }
+
+export default Error
