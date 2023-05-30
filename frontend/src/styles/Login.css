@@ -1,0 +1,43 @@
+#login_field {
+    padding: 2em;
+    margin-bottom: 1em;
+    border-color: transparent;
+}
+
+#login_field h1 {
+    margin: 0.5em;
+    animation: color-change 10s infinite;
+}
+
+@keyframes color-change {
+  0% { color :  #ff2db9}
+  10% { color : #ba43ff }
+  20% { color : #683ffc} 
+  30% { color : #4545f9} 
+  40% { color : #34a7ff} 
+  50% { color : #3EDEBF }
+  60% { color:  #3ede4e }
+  70% { color : #f0dd05 }
+  80% { color : #f96c14 }
+  90% { color : #ff3c00 }
+  100% { color : #ff0051 }
+}
+
+input[type="text"] {
+    font-family: Helvetica;
+    font-weight: bold;
+    font-size: 1em;
+    margin: 0.3em;
+    border-radius: 8px;
+    padding: 0.5em 1.2em;
+    font-size: 1em;
+}
+
+#signup_redirect {
+    color: white;
+    font-family: Helvetica;
+    font-style: italic;
+    margin: auto;
+    margin-top: 1em;
+    position: center;
+}

@@ -23,12 +23,14 @@ const Form = () => {
     setFormData(prevFormData => ({...prevFormData, [event.target.name]: event.target.value}));
   };
 
+  //dummy email and name fields for now.
+  //when adding user auth, change things
   const handleSubmit = async(event) => {
       event.preventDefault();
       try {
-        let res = await fetch("https://httpbin.org/post", {
-          method: "POST",
-          body: JSON.stringify({
+        const stringBody = JSON.stringify({
+            email: "hello@163.com",
+            name: "Test Test",
             q1: formData.q1,
             q2: formData.q2,
             q3: formData.q3,
@@ -36,7 +38,15 @@ const Form = () => {
             q5: formData.q5,
             q6: formData.q6,
             q7: formData.q7
-          }),
+        });
+        console.log(formData);
+        console.log(stringBody);
+        let res = await fetch("http://localhost:3000/api/survey/", {
+          method: "POST",
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: stringBody
         });
         let resJson = await res.json();
         if (res.status === 200) {
@@ -53,7 +63,7 @@ const Form = () => {
   return(
       <div>
           <form onSubmit={handleSubmit}>
-              <fieldset>
+              <fieldset id="survey_field">
                 <div className="question">
                   <p>Emacs or Vim?</p>
                   <div>
