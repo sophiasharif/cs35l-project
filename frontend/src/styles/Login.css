@@ -23,7 +23,7 @@
   100% { color : #ff0051 }
 }
 
-input[type="text"] {
+input[type="text"], input[type="password"], input[type="email"] {
     font-family: Helvetica;
     font-weight: bold;
     font-size: 1em;
