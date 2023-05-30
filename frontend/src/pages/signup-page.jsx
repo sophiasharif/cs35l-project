@@ -10,12 +10,10 @@ const Signup = () => {
   }, []);
 
   const {user} = useAuthContext();
-
-
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isPasswordValid, setIsPasswordValid] = useState(true);
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordMatch, setPasswordMatch] = useState(true);
   const [name, setName] = useState("");
   const {signup, error, isLoading} = useSignup();
@@ -26,6 +24,9 @@ const Signup = () => {
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
+
+    const isValidPassword = password.length >= 8;
+    setIsPasswordValid(isValidPassword);
   };
 
   const handleConfirmPasswordChange = (event) => {
@@ -85,7 +86,7 @@ const Signup = () => {
             </div>
             <div>
               <input
-                type="text"
+                type="password"
                 value={password}
                 onChange={handlePasswordChange}
                 placeholder="Password"
@@ -94,15 +95,16 @@ const Signup = () => {
             </div>
             <div>
               <input
-                type="text"
+                type="password"
                 value={confirmPassword}
                 onChange={handleConfirmPasswordChange}
                 placeholder="Re-enter password"
                 required
               />
             </div>
-            {!passwordMatch && <br></br> && <div>Passwords do not match.</div>}
-            <button disabled={!passwordMatch || isLoading}>Sign up</button>
+            {!passwordMatch && <div>Passwords do not match.</div>}
+            {!isPasswordValid && <div>Password must be at least 8 characters long.</div>}
+            <button disabled={!isPasswordValid || !passwordMatch || isLoading}>Sign up</button>
           {/* error from backend */}
           {error && <br></br> && <div>{error}</div>} 
           </form>
