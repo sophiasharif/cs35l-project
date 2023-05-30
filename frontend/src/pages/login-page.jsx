@@ -25,7 +25,7 @@ const Login = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    await login(email, password)
+    await login(email, password);
 
     // Perform login logic here with email and password
     // For this example, we'll simply log the values

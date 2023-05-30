@@ -10,12 +10,10 @@ const Signup = () => {
   }, []);
 
   const {user} = useAuthContext();
-
-
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [isPasswordValid, setIsPasswordValid] = useState(true);
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordMatch, setPasswordMatch] = useState(true);
   const [name, setName] = useState("");
   const {signup, error, isLoading} = useSignup();
@@ -26,6 +24,9 @@ const Signup = () => {
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
+
+    const isValidPassword = password.length >= 8;
+    setIsPasswordValid(isValidPassword);
   };
 
   const handleConfirmPasswordChange = (event) => {
@@ -100,7 +101,8 @@ const Signup = () => {
               />
             </div>
             {!passwordMatch && <p>Passwords do not match.</p>}
-            <button disabled={!passwordMatch || isLoading}>Sign up</button>
+            {!isPasswordValid && <p>Password must be at least 8 characters long.</p>}
+            <button disabled={!isPasswordValid || !passwordMatch || isLoading}>Submit</button>
           {/* error from backend */}
           {error && <div>{error}</div> } 
           </form>
