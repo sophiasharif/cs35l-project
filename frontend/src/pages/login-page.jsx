@@ -5,7 +5,7 @@ import "../styles/Login.css"
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const {login, error, isLoading} = useLogin()
+  const {login, error, isLoading} = useLogin();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -18,7 +18,7 @@ const LoginPage = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    await login(email, password)
+    await login(email, password);
 
     // Perform login logic here with email and password
     // For this example, we'll simply log the values
