@@ -4,7 +4,7 @@
 
 ### commands
 `npm install` in both frontend and backend to install all necessary packages
-`npm run dev` from the fronetend directory to start the frontend 
+`npm run dev` from the frontend directory to start the frontend 
 `nodemon server` from the backend directory to start the backend server
 
 ### .env file
