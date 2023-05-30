@@ -84,7 +84,7 @@ const Signup = () => {
             </div>
             <div>
               <input
-                type="text"
+                type="password"
                 value={password}
                 onChange={handlePasswordChange}
                 placeholder="Password"
@@ -93,7 +93,7 @@ const Signup = () => {
             </div>
             <div>
               <input
-                type="text"
+                type="password"
                 value={confirmPassword}
                 onChange={handleConfirmPasswordChange}
                 placeholder="Re-enter password"
