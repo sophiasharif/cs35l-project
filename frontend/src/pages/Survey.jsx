@@ -1,7 +1,10 @@
 import { useEffect } from 'react'
 import Form from '../components/Form'
+import { useAuthContext } from '../hooks/useAuthContext'
 
 function Survey () {
+
+    const {user} = useAuthContext();
 
     useEffect(() => {
         document.title = "FrieMacS - Survey"
@@ -9,9 +12,13 @@ function Survey () {
 
     return( 
         <div>
-        <h2>FrieMacS: A 35L Friend Matching Survey</h2> 
-        <h3>(Because we all know we need it.)</h3>
-        <Form/> 
+            <h2>FrieMacS: A 35L Friend Matching Survey</h2> 
+            {user && (
+                <Form/> 
+            )}
+            {!user && (
+                <h1>Sorry, you can't fill out the survey unless you're logged in.</h1>
+            )}
         </div>
     );
 }
