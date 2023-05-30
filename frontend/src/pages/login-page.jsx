@@ -1,10 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from 'react';
 import { useLogin } from "../hooks/useLogin";
 import "../styles/Login.css"
+import { useAuthContext } from '../hooks/useAuthContext'
 
-const LoginPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+const Login = () => {
+  useEffect(() => {
+    document.title = "FrieMacS - Log In"
+  }, []);
+
+  const {user} = useAuthContext();
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const {login, error, isLoading} = useLogin();
 
   const handleEmailChange = (event) => {
@@ -32,21 +39,30 @@ const LoginPage = () => {
 
   return (
     <div>
-      <fieldset id="login_field">
-        <h1>Welcome back!</h1>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <input type="email" value={email} onChange={handleEmailChange} placeholder="Email" required />
-          </div>
-          <div>
-            <input type="password" value={password} onChange={handlePasswordChange} placeholder="Password" required />
-          </div>
-          <button type="submit" disabled={isLoading}>Login</button>
-          {error && <div>{error}</div>}
-        </form>
-        <a id="signup_redirect" href="/signup">Don't have an account? Sign up here!</a>
-      </fieldset>
+      {!user && (
+        <fieldset id="login_field">
+          <h1>Welcome back!</h1>
+          <form onSubmit={handleSubmit}>
+            <div>
+              <input type="text" value={email} onChange={handleEmailChange} placeholder="Email" required />
+            </div>
+            <div>
+              <input type="text" value={password} onChange={handlePasswordChange} placeholder="Password" required />
+            </div>
+            <button type="submit" disabled={isLoading}>Login</button>
+            {error && <div>{error}</div>}
+          </form>
+          <a id="signup_redirect" href="/signup">Don't have an account? Sign up here!</a>
+        </fieldset>
+      )}
+      {user && (
+        <div>
+          <h2>You're logged in.</h2>
+          <h1>Please log out before attempting to login to another account.</h1>
+        </div>
+      )}
     </div>
-  )}
+  )
+}
 
-export default LoginPage;
+export default Login;

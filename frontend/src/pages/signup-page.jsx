@@ -1,9 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import { useSignup } from "../hooks/useSignup";
-import "../styles/Login.css"
+import { useAuthContext } from '../hooks/useAuthContext'
+import "../styles/Login.css";
 
+const Signup = () => {
 
-const SignupPage = () => {
+  useEffect(() => {
+    document.title = "FrieMacS - Sign Up"
+  }, []);
+
+  const {user} = useAuthContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isPasswordValid, setIsPasswordValid] = useState(true);
@@ -37,30 +43,30 @@ const SignupPage = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    
+    await signup(email, password);
 
-    await signup(email, password)
+    if (!error) {
+      alert("Congrats! You've successfully signed up for FrieMacS.");
+    }
 
     // Perform signup logic here with email and password
     // For this example, we'll simply log the values
     console.log("Email:", email);
     console.log("Password:", password);
     console.log("Name: ", name);
-
-    // Reset the form
-    setEmail("");
-    setPassword("");
-    setConfirmPassword("");
-    setName("");
+    
   };
 
   return (
     <div>
-      <fieldset id="login_field">
+      { !user && (
+        <fieldset id="login_field">
         <h1>Join FrieMacS</h1>
         <form onSubmit={handleSubmit}>
             <div>
               <input 
-                type="name" 
+                type="text" 
                 value={name} 
                 onChange={handleNameChange} 
                 placeholder="Name"
@@ -69,7 +75,7 @@ const SignupPage = () => {
             </div>
             <div>
               <input 
-                type="email" 
+                type="text" 
                 value={email} 
                 onChange={handleEmailChange} 
                 placeholder="Email"
@@ -78,7 +84,7 @@ const SignupPage = () => {
             </div>
             <div>
               <input
-                type="password"
+                type="text"
                 value={password}
                 onChange={handlePasswordChange}
                 placeholder="Password"
@@ -87,7 +93,7 @@ const SignupPage = () => {
             </div>
             <div>
               <input
-                type="password"
+                type="text"
                 value={confirmPassword}
                 onChange={handleConfirmPasswordChange}
                 placeholder="Re-enter password"
@@ -97,12 +103,19 @@ const SignupPage = () => {
             {!passwordMatch && <p>Passwords do not match.</p>}
             {!isPasswordValid && <p>Password must be at least 8 characters long.</p>}
             <button disabled={!isPasswordValid || !passwordMatch || isLoading}>Submit</button>
-        {/* error from backend */}
-        {error && <div>{error}</div> } 
-        </form>
-      </fieldset>
+          {/* error from backend */}
+          {error && <div>{error}</div> } 
+          </form>
+        </fieldset>
+      )}
+      {user && (
+        <div>
+          <h2>You're logged in.</h2>
+          <h1>Please log out before attempting to create another account.</h1>
+        </div>
+      )}
     </div>
   );
 };
 
-export default SignupPage;
+export default Signup;

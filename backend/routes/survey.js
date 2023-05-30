@@ -1,10 +1,16 @@
 const express = require('express');
-const router = express.Router();
 const {
     getAllResponses,
     getResponse,
     createResponse
 } = require("../controllers/surveyController");
+const requireAuth = require('../middleware/requireAuth')
+
+// instantiate router
+const router = express.Router();
+
+// require auth for all survey routes
+router.use(requireAuth)
  
 //get all survey responses
 router.get('/', getAllResponses);

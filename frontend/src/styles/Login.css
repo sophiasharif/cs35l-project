@@ -23,7 +23,7 @@
   100% { color : #ff0051 }
 }
 
-input {
+input[type="text"] {
     font-family: Helvetica;
     font-weight: bold;
     font-size: 1em;

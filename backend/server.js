@@ -1,5 +1,6 @@
 // import packages
 require("dotenv").config();
+//note: express uses http by default
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require('cors');
