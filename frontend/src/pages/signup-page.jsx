@@ -25,7 +25,7 @@ const Signup = () => {
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
 
-    const isValidPassword = password.length >= 8;
+    const isValidPassword = password.length >= 7;
     setIsPasswordValid(isValidPassword);
   };
 
