@@ -6,14 +6,14 @@ export function useSignup() {
   const [isLoading, setIsLoading] = useState(null);
   const { dispatch } = useAuthContext();
 
-  const signup = async (email, password) => {
+  const signup = async (name, email, password) => {
     setIsLoading(true);
     setError(null);
-
+    //NAVE
     const response = await fetch("http://localhost:3000/api/user/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ name, email, password }),
     });
     console.log('RESPONSE \n', response)
 
@@ -36,5 +36,7 @@ export function useSignup() {
     }
   };
 
+  console.log("Error from useSignup.js: ")
+  console.log(error)
   return { signup, isLoading, error };
 }
