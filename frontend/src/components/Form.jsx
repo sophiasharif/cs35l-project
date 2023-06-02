@@ -22,7 +22,7 @@ const Form = () => {
   useEffect(() => {
     const loadForm = async () => {
       try {
-        const response = await fetch(`https://cs35l-project.vercel.app/api/survey/${email}`, {
+        const response = await fetch(`https://friemacs-backend.onrender.com/${email}`, {
           method: "GET",
           headers: { 
             "Content-Type": "application/json",
@@ -98,7 +98,7 @@ const Form = () => {
         q6: formData.q6,
         q7: formData.q7,
       });
-      let res = await fetch("https://cs35l-project.vercel.app/api/survey/", {
+      let res = await fetch("https://friemacs-backend.onrender.com/api/survey/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
