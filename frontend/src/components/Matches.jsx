@@ -1,8 +1,6 @@
-// import React, {useState} from 'react';
 import '../styles/Matches.css';
 import Match from './Match.jsx';
 import { matchingAlgorithm } from '../utils/matchingAlgorithm';
-// import { useAuthContext } from "../hooks/useAuthContext";
 
 const Matches = (props) => {
   /***** CONSTANTS *****/
@@ -29,7 +27,10 @@ const Matches = (props) => {
     if (matchData[i])
       nMatches.push(oneMatch(i));
     else
+    {
       nMatches.push(<Match name="" email="" compscore={0} key={i} />)
+      break;
+    }
   }
 
   return(

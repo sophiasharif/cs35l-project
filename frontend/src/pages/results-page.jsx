@@ -13,14 +13,15 @@ function Results () {
     const [matchesToDisplay, setMatchesToDisplay] = useState(0);
     const [responses, setResponses] = useState({});
     const {user} = useAuthContext();
+    const matchIncrement = 3;
+    const maxMatches = matchIncrement*4;
     
     // Get all responses from Backend
     const {result, isLoading, error} = useResults();
     const obtainResponses = async (event) => {
       const temp = await result();
       setResponses(temp);
-      // console.log("From results-page.jsx: ", matchesToDisplay, responses);
-      setMatchesToDisplay(matchesToDisplay + 5);
+      setMatchesToDisplay(matchesToDisplay + matchIncrement);
     };
 
       return (
@@ -28,7 +29,7 @@ function Results () {
               <h2>FrieMacS: Results</h2> 
               {user && (
                 <div>
-                  <ResultsPrompt matchesToDisplay={matchesToDisplay} obtainResponses={obtainResponses} />
+                  <ResultsPrompt matchesToDisplay={matchesToDisplay} obtainResponses={obtainResponses} maxMatches={maxMatches} />
                   <Matches matchesToDisplay={matchesToDisplay} responses={responses} />
                 </div>
               )}

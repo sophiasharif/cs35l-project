@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import ReactDOM from 'react-dom/client';
 import '../styles/Matches.css';
 
 function Match (props) {
@@ -23,7 +22,7 @@ function Match (props) {
     return(
       <tr>
         <td colSpan={3}>
-          Looking for more matches. . .  Check back later!
+          Looking for matches. . . 
         </td>
       </tr>
     );
