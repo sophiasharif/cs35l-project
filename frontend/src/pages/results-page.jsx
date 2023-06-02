@@ -2,6 +2,7 @@ import {useEffect} from 'react'
 import Matches from '../components/Matches.jsx'
 import { useAuthContext } from '../hooks/useAuthContext'
 import {useResults} from '../hooks/useResults.js'
+import ResultsPrompt from '../components/ResultsPrompt.jsx'
 
 function Results () {
   useEffect(() => {
@@ -17,25 +18,24 @@ function Results () {
     const {result, isLoading, error} = useResults();
     const obtainResponses = async (event) => {
       responses = await result();
+      matchesToDisplay = matchesToDisplay + 5;
+      console.log(matchesToDisplay)
     };
-
     
-
-    return (
-        <div>
-            <h2>FrieMacS: Results</h2> 
-            {user && (
-              <div>
-                <h3>Here's {matchesToDisplay} people we found for you to befriend!</h3>
-                <button onClick={obtainResponses}>Start Making Friends</button>
-                <Matches matchesToDisplay={matchesToDisplay} />
-              </div>
-            )}
-            {!user && (
-                <h1>Sorry, you can't view your results unless you're logged in.</h1>
-            )}
-        </div>
-    )
-}
+      return (
+          <div>
+              <h2>FrieMacS: Results</h2> 
+              {user && (
+                <div>
+                  <ResultsPrompt matchesToDisplay={matchesToDisplay} obtainResponses={obtainResponses} />
+                  <Matches matchesToDisplay={matchesToDisplay} />
+                </div>
+              )}
+              {!user && (
+                  <h1>Sorry, you can't view your results unless you're logged in.</h1>
+              )}
+          </div>
+      );  
+};
 
 export default Results

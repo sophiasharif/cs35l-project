@@ -63,4 +63,3 @@ function calculateMatchingScore(result, target) {
 
   return score;
 }
-
