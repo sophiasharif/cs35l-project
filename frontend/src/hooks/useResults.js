@@ -10,7 +10,7 @@ export function useResults() {
     setIsLoading(true);
     setError(null);
 
-    const responses = await fetch("https://cs35l-project.vercel.app/api/survey/", {
+    const responses = await fetch("https://friemacs-backend.onrender.com/api/survey/", {
       method: "GET",
       headers: { "Content-Type": "application/json",
                  "Authorization": `Bearer ${user.token}`,
