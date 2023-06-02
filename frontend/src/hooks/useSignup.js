@@ -9,10 +9,10 @@ export function useSignup() {
   const signup = async (name, email, password) => {
     setIsLoading(true);
     setError(null);
-
+    
     let my_body = JSON.stringify({ name, email, password });
+    const response = await fetch("https://friemacs-backend.onrender.com/api/user/signup", {
 
-    const response = await fetch("http://localhost:3000/api/user/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: my_body,
