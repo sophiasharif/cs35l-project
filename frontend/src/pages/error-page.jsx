@@ -2,7 +2,7 @@ import { useRouteError } from "react-router-dom";
 
 function Error() {
   useEffect(() => {
-    document.title = "FrEMACS - Error"
+    document.title = "FriEMaCS - Error"
   }, []);
 
   const error = useRouteError();
