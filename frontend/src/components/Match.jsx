@@ -23,7 +23,7 @@ function Match (props) {
     return(
       <tr>
         <td colSpan={3}>
-          No match found.  Check back later!
+          Looking for more matches. . .  Check back later!
         </td>
       </tr>
     );
