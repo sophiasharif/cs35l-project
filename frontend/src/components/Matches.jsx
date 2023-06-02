@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+// import React, {useState} from 'react';
 import '../styles/Matches.css';
 import Match from './Match.jsx';
 // import { useAuthContext } from "../hooks/useAuthContext";
@@ -27,9 +27,7 @@ const Matches = (props) => {
   /***** CONSTANTS *****/
   const NUMMATCHES = props.matchesToDisplay; // Set to however many matches to print on Results page
                      // any nonnegative int is allowed regardless of how many users in backend
-  const responses = props.responses; // An array of User JSONs, access Users with responses[0], etc. 
-  let refinedResponses = {};
-
+  let matchData = props.responses; // An array of User JSONs, access Users with responses[0], etc. 
   /*
   const testMatches = { 
     1: {name : 'Alice', email : 'alice@fremacs.com', compscore : 5}, 
@@ -39,12 +37,9 @@ const Matches = (props) => {
     5: {name : 'Joe', email : 'd@fremacs.com', compscore : 0}, 
   };
   */
-  
-  console.log("In matches:");
-  console.log(responses[0]);
 
-  const [matchData, setMatchData] = useState(responses);
-  
+  console.log("In Matches: ", matchData);
+
   const oneMatch = (matchNum) => {
     return (
       <Match
