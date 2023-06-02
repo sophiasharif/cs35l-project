@@ -44,13 +44,15 @@ const Signup = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const { error: check_error } = await signup(name, email, password);
+    //const { error: check_error } = 
+    await signup(name, email, password);
 
-    if (!check_error) {
+    //let 
+    if (!error) {
       alert("Congrats! You've successfully signed up for FrieMacS.");
     }
 
-   console.log(check_error);
+   //console.log(check_error);
 
     // Perform signup logic here with email and password
     // For this example, we'll simply log the values
@@ -117,7 +119,7 @@ const Signup = () => {
           <h1>Please log out before attempting to create another account.</h1>
         </div>
       )}
-      {console.log(user)/*//NAVE*/}
+      {console.log("Current User from react page:" + user)/*//NAVE*/}
     </div>
   );
 };

@@ -9,11 +9,14 @@ export function useSignup() {
   const signup = async (name, email, password) => {
     setIsLoading(true);
     setError(null);
+    console.log("We are signing up");
     //NAVE
+    let my_body = JSON.stringify({ name, email, password });
+
     const response = await fetch("http://localhost:3000/api/user/signup", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, password }),
+      body: my_body,
     });
     console.log('RESPONSE \n', response)
 
