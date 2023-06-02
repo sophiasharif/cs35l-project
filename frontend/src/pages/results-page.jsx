@@ -5,7 +5,7 @@ import { useAuthContext } from '../hooks/useAuthContext'
 function Results() {
     const matchesToDisplay = 15;
 
-    const {user} = useAuthContext();
+    const {user} = useAuthContext(); // Usage: {user.email} or {user.token} etc.
 
     useEffect(() => {
         document.title = "FriEMaCS - Results";

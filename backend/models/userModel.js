@@ -5,6 +5,11 @@ const validator = require("validator"); // library to validate email & password
 // user model
 const Schema = mongoose.Schema;
 const userSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+    unique: true,
+  },
   email: {
     type: String,
     required: true,
@@ -17,10 +22,10 @@ const userSchema = new Schema({
 });
 
 // static signup method
-userSchema.statics.signup = async function (email, password) {
+userSchema.statics.signup = async function (name, email, password) {
     
   // validation
-  if (!email || !password) {
+  if (!name || !email || !password) {
     throw Error("All fields must be filled.");
   }
   if (!validator.isEmail(email)) {
@@ -38,7 +43,9 @@ userSchema.statics.signup = async function (email, password) {
   const hash = await bcrypt.hash(password, salt);
 
   // create user
-  const user = await this.create({ email, password: hash });
+  const user = await this.create({ name, email, password: hash });
+  console.log("userModel.js")
+  console.log(user) //NAVE
 
   return user;
 };
@@ -62,7 +69,6 @@ userSchema.statics.login = async function(email, password) {
   }
 
   return user
-
 }
 
 module.exports = mongoose.model("User", userSchema);

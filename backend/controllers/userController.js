@@ -15,10 +15,11 @@ async function loginUser(req, res) {
   try {
     const user = await User.login(email, password);
 
+    const name = user.name;
     // create a token
     const token = createToken(user._id)
 
-    res.status(200).json({ email, token });
+    res.status(200).json({ name, email, token });
 
   } catch (err) {
     res.status(400).json({ error: err.message });
@@ -27,16 +28,19 @@ async function loginUser(req, res) {
 
 // sign up user
 async function signupUser(req, res) {
-  const { email, password } = req.body;
+  const { name, email, password } = req.body;
+  console.log("userController.js")
+  console.log(req.body);//NAVE
 
   try {
-    const user = await User.signup(email, password);
+    const user = await User.signup(name, email, password);
 
     // create a token
     const token = createToken(user._id)
 
-    res.status(200).json({ email, token });
+    res.status(200).json({ name, email, token });
   } catch (err) {
+    console.log("err in userController.js");//NAVE
     res.status(400).json({ error: err.message });
   }
 }
