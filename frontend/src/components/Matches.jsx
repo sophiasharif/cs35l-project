@@ -31,11 +31,12 @@ const Matches = (props) => {
   }
 
   const nMatches = [];
+
   for (let i = 1; i <= NUMMATCHES; i++) {
     if (matchData[i])
       nMatches.push(oneMatch(i));
     else
-      nMatches.push(<Match name="" email="" compscore={0} />)
+      nMatches.push(<Match name="" email="" compscore={0} key={i} />)
   }
 
   return(

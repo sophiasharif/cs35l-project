@@ -1,11 +1,13 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { useAuthContext } from "../hooks/useAuthContext";
 import "../styles/Form.css";
 
 const Form = () => {
   const { user } = useAuthContext();
+  const email = user.email;
 
-  const emptyForm = {
+  const [formData, setFormData] = useState({
     q1: "",
     q2: "",
     q3: "",
@@ -13,13 +15,60 @@ const Form = () => {
     q5: "files",
     q6: "",
     q7: "5",
-  };
+  });
 
-  const [formData, setFormData] = useState(emptyForm);
+  const [loading, setLoading] = useState(true);
 
-  const resetFormData = () => {
-    setFormData(emptyForm);
-  };
+  useEffect(() => {
+    const loadForm = async () => {
+      console.log(email);
+      try {
+        const response = await fetch(`http://localhost:3000/api/survey/${email}`, {
+          method: "GET",
+          headers: { 
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${user.token}`
+          }
+        });
+        if (response.ok) {
+          const surveyResponse = await response.json();
+          setFormData({
+            q1: surveyResponse.q1 || "",
+            q2: surveyResponse.q2 || "",
+            q3: surveyResponse.q3 || "",
+            q4: surveyResponse.q4 || "",
+            q5: surveyResponse.q5 || "files",
+            q6: surveyResponse.q6 || "",
+            q7: surveyResponse.q7 || "5",
+          });
+        } else {
+          setFormData({
+            q1: "",
+            q2: "",
+            q3: "",
+            q4: "",
+            q5: "files",
+            q6: "",
+            q7: "5",
+          });
+        }
+      } catch {
+        setFormData({
+          q1: "",
+          q2: "",
+          q3: "",
+          q4: "",
+          q5: "files",
+          q6: "",
+          q7: "5",
+        });
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadForm();
+  }, [email]);
 
   const handleFormData = (event) => {
     setFormData((prevFormData) => ({
@@ -42,7 +91,7 @@ const Form = () => {
     try {
       const stringBody = JSON.stringify({
         email: user.email,
-        name: "Test Test",
+        name: "Test test",
         q1: formData.q1,
         q2: formData.q2,
         q3: formData.q3,
@@ -66,7 +115,6 @@ const Form = () => {
         alert(
           "Thanks for submitting the CS35l friendship matching form! Results will come out soon!"
         );
-        resetFormData();
       } else {
         alert("An error occurred when submitting your form!");
       }
@@ -77,6 +125,8 @@ const Form = () => {
 
   return (
     <div>
+      {loading && <h3>Loading your previous answers...</h3>}
+      <h3>Feel free to submit the survey as many times as you'd like. We'll save your previous response for when you come back! </h3>
       <form onSubmit={handleSubmit}>
         <fieldset id="survey_field">
           <div className="question">
