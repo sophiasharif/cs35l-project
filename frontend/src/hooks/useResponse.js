@@ -1,24 +1,24 @@
 import { useState } from "react";
 import { useAuthContext } from "./useAuthContext";
 
-export function useResults() {
+export function useResponse() {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
   const { user } = useAuthContext();
 
-  const result = async () => {
+  const response = async () => {
     setIsLoading(true);
     setError(null);
 
-    const responses = await fetch("http://localhost:3000/api/survey/", {
+    const response = await fetch(`http://localhost:3000/api/survey/${user.email}`, {
       method: "GET",
       headers: { "Content-Type": "application/json",
                  "Authorization": `Bearer ${user.token}`,
             },
     });
 
-    const json = await responses.json();
+    const json = await response.json();
     return json;
   };
-  return { result, isLoading, error };
+  return { response, isLoading, error };
 }

@@ -1,38 +1,42 @@
+import { useEffect, useState } from "react";
 import { useResults } from "../hooks/useResults";
 import { useResponse } from "../hooks/useResponse";
 
-export async function matchingAlgorithm() {
+export function matchingAlgorithm() {
   const { result } = useResults();
   const { response } = useResponse();
+  const [matchedResponses, setMatchedResponses] = useState([]);
 
-  try {
-    const responses = await result();
-    const target = await response();
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const responses = await result();
+        const target = await response();
 
-    // Perform the matching algorithm with the results and target person
-    const matchedResponses = matchResults(responses, target);
+        const processedResponses = matchResults(responses, target);
+        setMatchedResponses(processedResponses);
+      } catch (error) {
+        console.error(error);
+        setMatchedResponses([]);
+      }
+    };
 
-    return matchedResponses;
+    fetchData();
+  }, [result, response]);
 
-  } catch (error) {
-    // Handle any errors that occurred during the retrieval
-    console.error(error);
-    // Handle the error appropriately (e.g., logging, error response, etc.)
-    return null;
-  }
+  return matchedResponses;
 }
 
 function matchResults(responses, target) {
-  for (const response of responses) {
-    // Compare the relevant fields and calculate matching score
-    response.score = calculateMatchingScore(response, target);
-  }
+  const processedResponses = responses.map((res) => ({
+    ...res,
+    compscore: calculateMatchingScore(res, target),
+  }));
 
-  responses.sort((a, b) => b.score - a.score);
+  processedResponses.sort((a, b) => b.compscore - a.compscore);
+  processedResponses.pop();
 
-  responses.splice(responses.length - 1, 1);
-
-  return responses;
+  return processedResponses;
 }
 
 function calculateMatchingScore(result, target) {
@@ -51,6 +55,5 @@ function calculateMatchingScore(result, target) {
       score++;
     }
   }
-
   return score;
 }

@@ -7,15 +7,15 @@ import { matchingAlgorithm } from '../utils/matchingAlgorithm';
 
 const Matches = (props) => {
   /***** CONSTANTS *****/
-  const NUMMATCHES = props.matchesToDisplay; // Set to however many matches to print on Results page
+  const NUMMATCHES = 1; // Set to however many matches to print on Results page
                      // any nonnegative int is allowed regardless of how many users in backend
 
   // TODO: Actually get users (name, email, compscore) from Backend
   const { user } = useAuthContext();
-  const matchResult = matchingAlgorithm(user.email);
+  const matchResult = matchingAlgorithm();
   
   const [matchData, setMatchData] = useState(matchResult);
-  
+
   const oneMatch = (matchNum) => {
     return (
       <Match
