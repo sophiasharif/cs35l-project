@@ -6,7 +6,7 @@ import "../styles/Login.css";
 const Signup = () => {
 
   useEffect(() => {
-    document.title = "FrieMacS - Sign Up"
+    document.title = "FriEMaCS - Sign Up"
   }, []);
 
   const {user} = useAuthContext();
@@ -47,7 +47,7 @@ const Signup = () => {
     await signup(name, email, password);
 
     if (!error) {
-      alert("Congrats! You've successfully signed up for FrieMacS.");
+      alert("Congrats! You've successfully signed up for FriEMaCS.");
     }
     //console.log(error)
 
@@ -63,7 +63,7 @@ const Signup = () => {
     <div>
       { !user && (
         <fieldset id="login_field">
-        <h1>Join FrieMacS</h1>
+        <h1>Join FriEMaCS</h1>
         <form onSubmit={handleSubmit}>
             <div>
               <input 
