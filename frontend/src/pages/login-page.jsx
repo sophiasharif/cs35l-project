@@ -5,7 +5,7 @@ import { useAuthContext } from '../hooks/useAuthContext'
 
 const Login = () => {
   useEffect(() => {
-    document.title = "FrieMacS - Log In"
+    document.title = "FriEMaCS - Log In"
   }, []);
 
   const {user} = useAuthContext();

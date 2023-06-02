@@ -1,24 +1,17 @@
-import React, {useState} from 'react';
+// import React, {useState} from 'react';
 import '../styles/Matches.css';
 import Match from './Match.jsx';
+import { matchingAlgorithm } from '../utils/matchingAlgorithm';
 // import { useAuthContext } from "../hooks/useAuthContext";
 
 const Matches = (props) => {
   /***** CONSTANTS *****/
   const NUMMATCHES = props.matchesToDisplay; // Set to however many matches to print on Results page
                      // any nonnegative int is allowed regardless of how many users in backend
+  let responses = props.responses; // An array of User JSONs, access Users with responses[0], etc. 
+  let rankedMatches = matchingAlgorithm(responses);
+  let matchData = rankedMatches;
 
-  // TODO: Actually get users (name, email, compscore) from Backend
-  const testMatches = { 
-    1: {name : 'Alice', email : 'alice@fremacs.com', compscore : 5}, 
-    2: {name : 'B', email : 'bob@fremacs.com', compscore : 4}, 
-    3: {name : 'C', email : 'c@fremacs.com', compscore : 3}, 
-    4: {name : 'D', email : "someone.email", compscore : 1}, 
-    5: {name : 'Joe', email : 'd@fremacs.com', compscore : 0}, 
-  };
-  
-  const [matchData, setMatchData] = useState(testMatches);
-  
   const oneMatch = (matchNum) => {
     return (
       <Match

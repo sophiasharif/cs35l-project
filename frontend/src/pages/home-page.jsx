@@ -3,7 +3,7 @@ import {useEffect} from 'react'
 function Home() {
 
     useEffect(() => {
-        document.title = "FrieMacS"
+        document.title = "FriEMaCS"
       }, []);
 
     return (
