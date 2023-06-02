@@ -9,8 +9,7 @@ export function useSignup() {
   const signup = async (name, email, password) => {
     setIsLoading(true);
     setError(null);
-    console.log("We are signing up");
-    //NAVE
+
     let my_body = JSON.stringify({ name, email, password });
 
     const response = await fetch("http://localhost:3000/api/user/signup", {
@@ -18,11 +17,11 @@ export function useSignup() {
       headers: { "Content-Type": "application/json" },
       body: my_body,
     });
-    console.log('RESPONSE \n', response)
+    //console.log('RESPONSE \n', response)
 
     const json = await response.json();
 
-    console.log('JSON\n', json)
+    //console.log('JSON\n', json)
 
     if (!response.ok) {
       setIsLoading(false);
@@ -39,7 +38,7 @@ export function useSignup() {
     }
   };
 
-  console.log("Error from useSignup.js: ")
-  console.log(error)
+  //console.log("Error from useSignup.js: ")
+  //console.log(error)
   return { signup, isLoading, error };
 }

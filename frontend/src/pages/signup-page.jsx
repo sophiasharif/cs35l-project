@@ -44,21 +44,18 @@ const Signup = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    //const { error: check_error } = 
     await signup(name, email, password);
 
-    //let 
     if (!error) {
       alert("Congrats! You've successfully signed up for FrieMacS.");
     }
-
-   //console.log(check_error);
+    //console.log(error)
 
     // Perform signup logic here with email and password
     // For this example, we'll simply log the values
-    console.log("Email:", email);
-    console.log("Password:", password);
-    console.log("Name: ", name);
+    // console.log("Email:", email);
+    // console.log("Password:", password);
+    // console.log("Name: ", name);
     
   };
 
