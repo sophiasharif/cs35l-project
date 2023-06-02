@@ -13,7 +13,7 @@ function Results () {
     let matchesToDisplay = 0;
     let responses = {};
     const {user} = useAuthContext();
-
+    
     // Get all responses from Backend
     const {result, isLoading, error} = useResults();
     const obtainResponses = async (event) => {
@@ -21,7 +21,7 @@ function Results () {
       matchesToDisplay = matchesToDisplay + 5;
       console.log(matchesToDisplay)
     };
-    
+
       return (
           <div>
               <h2>FrieMacS: Results</h2> 

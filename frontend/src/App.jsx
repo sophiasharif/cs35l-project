@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useAuthContext } from "./hooks/useAuthContext";
 import "./App.css";
 
 // import pages & components
@@ -11,6 +12,7 @@ import Survey from "./pages/Survey.jsx";
 import Results from "./pages/results-page.jsx";
 
 function App() {
+  const { user } = useAuthContext()
   const [count, setCount] = useState(0);
 
   return (
@@ -19,11 +21,11 @@ function App() {
         <NavBar />
         <div className="pages">
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/survey" element={<Survey />} />
-            <Route path="/results" element={<Results />} />
+            <Route path="/" element={ <Home /> } />
+            <Route path="/login" element={!user ? <Login /> : <Navigate to="/"/>} />
+            <Route path="/signup" element={!user ? <Signup /> : <Navigate to="/"/>} />
+            <Route path="/survey" element={ user ? <Survey /> : <Navigate to="/login"/> } />
+            <Route path="/results" element={user ? <Results /> : <Navigate to="/login"/>} />
           </Routes>
         </div>
       </BrowserRouter>
