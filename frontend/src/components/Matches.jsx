@@ -3,12 +3,34 @@ import '../styles/Matches.css';
 import Match from './Match.jsx';
 // import { useAuthContext } from "../hooks/useAuthContext";
 
+function calculateMatchingScore(result, target) {
+  let score = 0;
+
+  if(result['name'] === target['name'] && result['email'] === target['email']) {
+    return 0;
+  }
+
+  for (let answer in target) {
+    if (answer === 'name' || answer === 'email') {
+      continue;
+    }
+
+    if (result.hasOwnProperty(answer) && result[answer] === target[answer]) {
+      score++;
+    }
+  }
+
+  return score;
+}
+
 const Matches = (props) => {
   /***** CONSTANTS *****/
   const NUMMATCHES = props.matchesToDisplay; // Set to however many matches to print on Results page
                      // any nonnegative int is allowed regardless of how many users in backend
+  const responses = props.responses; // An array of User JSONs, access Users with responses[0], etc. 
+  let refinedResponses = {};
 
-  // TODO: Actually get users (name, email, compscore) from Backend
+  /*
   const testMatches = { 
     1: {name : 'Alice', email : 'alice@fremacs.com', compscore : 5}, 
     2: {name : 'B', email : 'bob@fremacs.com', compscore : 4}, 
@@ -16,8 +38,12 @@ const Matches = (props) => {
     4: {name : 'D', email : "someone.email", compscore : 1}, 
     5: {name : 'Joe', email : 'd@fremacs.com', compscore : 0}, 
   };
+  */
   
-  const [matchData, setMatchData] = useState(testMatches);
+  console.log("In matches:");
+  console.log(responses[0]);
+
+  const [matchData, setMatchData] = useState(responses);
   
   const oneMatch = (matchNum) => {
     return (

@@ -11,14 +11,15 @@ function Results () {
 
     // Variables
     const [matchesToDisplay, setMatchesToDisplay] = useState(0);
-    let responses = {};
+    const [responses, setResponses] = useState({});
     const {user} = useAuthContext();
     
     // Get all responses from Backend
     const {result, isLoading, error} = useResults();
     const obtainResponses = async (event) => {
-      responses = await result();
-      console.log(matchesToDisplay)
+      const temp = await result();
+      setResponses(temp);
+      console.log(matchesToDisplay);
       setMatchesToDisplay(matchesToDisplay + 5);
     };
 
@@ -28,7 +29,7 @@ function Results () {
               {user && (
                 <div>
                   <ResultsPrompt matchesToDisplay={matchesToDisplay} obtainResponses={obtainResponses} />
-                  <Matches matchesToDisplay={matchesToDisplay} />
+                  <Matches matchesToDisplay={matchesToDisplay} responses={responses} />
                 </div>
               )}
               {!user && (

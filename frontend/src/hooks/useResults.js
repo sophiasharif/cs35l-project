@@ -18,7 +18,6 @@ export function useResults() {
     });
 
     const json = await responses.json();
-    console.log("RESPONSES: ", json);
     return json;
   };
   return { result, isLoading, error };
