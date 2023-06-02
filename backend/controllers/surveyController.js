@@ -31,7 +31,7 @@ const createResponse = async (req, res) => {
     const {email, name, q1, q2, q3, q4, q5, q6, q7} = req.body; //take the json file
                                             //and destructure it.
     try{
-        //try to create a new document  
+        // try to create a new document  
         // recall that MongoDB is a "Document-based" database
         // from the object that we got
         const response = await Survey.create({email, name, q1, q2, q3, q4, q5, q6, q7});
