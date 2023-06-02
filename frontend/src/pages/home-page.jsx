@@ -8,8 +8,9 @@ function Home() {
 
     return (
         <div className="home">
-            <h2>FrieMacS: A 35L Friend Matching Survey</h2> 
-            <h3>(Because we all know we need it.)</h3>
+            <h2>FriEMaCS: A 35L Friend Matching Survey</h2> 
+            <h3>Friends for Engineers, Mathematicians, and Computer Scientists.</h3>
+            <h4>(Because we all know we need it.)</h4>
         </div>
     )
 }
