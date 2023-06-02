@@ -17,11 +17,9 @@ export function useSignup() {
       headers: { "Content-Type": "application/json" },
       body: my_body,
     });
-    //console.log('RESPONSE \n', response)
 
     const json = await response.json();
 
-    //console.log('JSON\n', json)
 
     if (!response.ok) {
       setIsLoading(false);
@@ -38,7 +36,5 @@ export function useSignup() {
     }
   };
 
-  //console.log("Error from useSignup.js: ")
-  //console.log(error)
   return { signup, isLoading, error };
 }

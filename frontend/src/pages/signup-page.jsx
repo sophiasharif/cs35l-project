@@ -49,13 +49,6 @@ const Signup = () => {
     if (!error) {
       alert("Congrats! You've successfully signed up for FriEMaCS.");
     }
-    //console.log(error)
-
-    // Perform signup logic here with email and password
-    // For this example, we'll simply log the values
-    // console.log("Email:", email);
-    // console.log("Password:", password);
-    // console.log("Name: ", name);
     
   };
 
@@ -116,7 +109,6 @@ const Signup = () => {
           <h1>Please log out before attempting to create another account.</h1>
         </div>
       )}
-      {console.log("Current User from react page:" + user)/*//NAVE*/}
     </div>
   );
 };
