@@ -6,7 +6,7 @@ import "../styles/Login.css";
 const Signup = () => {
 
   useEffect(() => {
-    document.title = "FrieMacS - Sign Up"
+    document.title = "FriEMaCS - Sign Up"
   }, []);
 
   const {user} = useAuthContext();
@@ -47,15 +47,8 @@ const Signup = () => {
     await signup(name, email, password);
 
     if (!error) {
-      alert("Congrats! You've successfully signed up for FrieMacS.");
+      alert("Congrats! You've successfully signed up for FriEMaCS.");
     }
-    //console.log(error)
-
-    // Perform signup logic here with email and password
-    // For this example, we'll simply log the values
-    // console.log("Email:", email);
-    // console.log("Password:", password);
-    // console.log("Name: ", name);
     
   };
 
@@ -63,7 +56,7 @@ const Signup = () => {
     <div>
       { !user && (
         <fieldset id="login_field">
-        <h1>Join FrieMacS</h1>
+        <h1>Join FriEMaCS</h1>
         <form onSubmit={handleSubmit}>
             <div>
               <input 
@@ -116,7 +109,6 @@ const Signup = () => {
           <h1>Please log out before attempting to create another account.</h1>
         </div>
       )}
-      {console.log("Current User from react page:" + user)/*//NAVE*/}
     </div>
   );
 };

@@ -21,9 +21,8 @@ const Form = () => {
 
   useEffect(() => {
     const loadForm = async () => {
-      console.log(email);
       try {
-        const response = await fetch(`http://localhost:3000/api/survey/${email}`, {
+        const response = await fetch(`https://friemacs-backend.onrender.com/api/survey/${email}`, {
           method: "GET",
           headers: { 
             "Content-Type": "application/json",
@@ -52,7 +51,7 @@ const Form = () => {
             q7: "5",
           });
         }
-      } catch {
+      } catch (error) {
         setFormData({
           q1: "",
           q2: "",
@@ -80,7 +79,6 @@ const Form = () => {
   //dummy email and name fields for now.
   //when adding user auth, change things
   const handleSubmit = async (event) => {
-    console.log(user)
 
     if (!user) {
       alert('You must be logged in!')
@@ -91,7 +89,7 @@ const Form = () => {
     try {
       const stringBody = JSON.stringify({
         email: user.email,
-        name: "Test test",
+        name: user.name,
         q1: formData.q1,
         q2: formData.q2,
         q3: formData.q3,
@@ -100,9 +98,7 @@ const Form = () => {
         q6: formData.q6,
         q7: formData.q7,
       });
-      console.log(formData);
-      console.log(stringBody);
-      let res = await fetch("http://localhost:3000/api/survey/", {
+      let res = await fetch("https://friemacs-backend.onrender.com/api/survey/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -119,7 +115,6 @@ const Form = () => {
         alert("An error occurred when submitting your form!");
       }
     } catch (err) {
-      console.log(err);
     }
   };
 

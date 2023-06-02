@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 
 const ResultsPrompt = (props) => {
   // Props: obtainResponses, matchesToDisplay
-
   if (!props.matchesToDisplay) {
     return(
       <>

@@ -7,12 +7,12 @@ function Survey () {
     const {user} = useAuthContext();
 
     useEffect(() => {
-        document.title = "FrieMacS - Survey"
+        document.title = "FriEMaCS - Survey"
       }, []);
 
     return( 
         <div>
-            <h2>FrieMacS: A 35L Friend Matching Survey</h2> 
+            <h2>FriEMaCS: A 35L Friend Matching Survey</h2> 
             {user && (
                 <Form/> 
             )}

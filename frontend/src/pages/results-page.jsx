@@ -19,7 +19,7 @@ function Results () {
     const obtainResponses = async (event) => {
       const temp = await result();
       setResponses(temp);
-      console.log("From results-page.jsx: ", matchesToDisplay, responses);
+      // console.log("From results-page.jsx: ", matchesToDisplay, responses);
       setMatchesToDisplay(matchesToDisplay + 5);
     };
 
