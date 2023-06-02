@@ -19,7 +19,6 @@ function Results () {
     const obtainResponses = async (event) => {
       responses = await result();
       matchesToDisplay = matchesToDisplay + 5;
-      console.log(matchesToDisplay)
     };
 
       return (
