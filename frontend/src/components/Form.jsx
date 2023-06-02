@@ -91,7 +91,7 @@ const Form = () => {
     try {
       const stringBody = JSON.stringify({
         email: user.email,
-        name: "Test test",
+        name: user.name,
         q1: formData.q1,
         q2: formData.q2,
         q3: formData.q3,
