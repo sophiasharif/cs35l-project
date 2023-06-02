@@ -22,7 +22,7 @@ const Form = () => {
   useEffect(() => {
     const loadForm = async () => {
       try {
-        const response = await fetch(`https://friemacs-backend.onrender.com/${email}`, {
+        const response = await fetch(`https://friemacs-backend.onrender.com/api/survey/${email}`, {
           method: "GET",
           headers: { 
             "Content-Type": "application/json",
