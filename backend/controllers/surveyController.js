@@ -1,6 +1,5 @@
 const Survey = require('../models/surveyModel')
 
-//get all responses
 const getAllResponses = async (req, res) => {
     //Workout.find({}) finds all workouts and returns them as an array.
     //then sorts with ascending questionId numbers.
@@ -25,6 +24,8 @@ const getResponse = async (req, res) => {
         });
 }
 //post new response
+//get all responses
+/*
 const createResponse = async (req, res) => {
     console.log("here's the body");
     console.log(req.body);
@@ -37,9 +38,26 @@ const createResponse = async (req, res) => {
         const response = await Survey.create({email, name, q1, q2, q3, q4, q5, q6, q7});
         res.status(200).json(response);
     }catch(error){
-        res.status(400).json({error: error.message})
+        res.status(500).json({error: error.message})
     }
 }
+*/
+const createResponse = async (req, res) => {
+    console.log("here's the body");
+    console.log(req.body);
+    const { email, name, q1, q2, q3, q4, q5, q6, q7 } = req.body;
+  
+    try {
+      const query = { email }; // Assuming email is the unique identifier for the survey response
+      const update = { email, name, q1, q2, q3, q4, q5, q6, q7 };
+      const options = { upsert: true, new: true }; // Set upsert to true and new to true to return the updated or newly created document
+  
+      const response = await Survey.findOneAndUpdate(query, update, options);
+      res.status(200).json(response);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
+    }
+  }
 //delete response
 //update response
 
