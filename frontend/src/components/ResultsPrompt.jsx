@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
-import ReactDOM from 'react-dom/client';
-import '../styles/Matches.css';
 
-function ResultsPrompt (props) {
+const ResultsPrompt = (props) => {
   // Props: obtainResponses, matchesToDisplay
 
   if (!props.matchesToDisplay) {

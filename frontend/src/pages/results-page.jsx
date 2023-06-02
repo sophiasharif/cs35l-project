@@ -1,4 +1,4 @@
-import {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import Matches from '../components/Matches.jsx'
 import { useAuthContext } from '../hooks/useAuthContext'
 import {useResults} from '../hooks/useResults.js'
@@ -10,7 +10,7 @@ function Results () {
   }, []);
 
     // Variables
-    let matchesToDisplay = 0;
+    const [matchesToDisplay, setMatchesToDisplay] = useState(0);
     let responses = {};
     const {user} = useAuthContext();
     
@@ -18,8 +18,8 @@ function Results () {
     const {result, isLoading, error} = useResults();
     const obtainResponses = async (event) => {
       responses = await result();
-      matchesToDisplay = matchesToDisplay + 5;
       console.log(matchesToDisplay)
+      setMatchesToDisplay(matchesToDisplay + 5);
     };
 
       return (
