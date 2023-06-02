@@ -10,7 +10,7 @@ const requireAuth = require('../middleware/requireAuth')
 const router = express.Router();
 
 // require auth for all survey routes
-router.use(requireAuth)
+router.use(requireAuth);
  
 //get all survey responses
 router.get('/', getAllResponses);
