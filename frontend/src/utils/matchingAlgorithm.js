@@ -1,10 +1,13 @@
+import { useAuthContext } from "../hooks/useAuthContext";
+
 export async function matchingAlgorithm(targetName) {
+  const { user } = useAuthContext();
   try {
     // Retrieve all results from the database
     const responses = await fetch("http://localhost:3000/api/survey/", {
       method: "GET",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password, q1, q2, q3, q4, q5, q6, q7 }),
+      headers: { "Content-Type": "application/json",
+                  "Authorization": `Bearer ${user.token}` }
     });
 
     target = responses.find(response => response.name === targetName);
