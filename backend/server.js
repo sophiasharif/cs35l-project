@@ -32,14 +32,15 @@ app.use('/api/survey', surveyRoutes);
 // routes
 app.use('/api/user', userRoutes)
 
+const PORT = process.env.PORT
 
 // connect to mongo
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => {
     // listen for requests
-    app.listen(3000, () => {
-      console.log("listening to port 3000");
+    app.listen(PORT, () => {
+      console.log(`listening to port ${PORT}`);
     });
   })
   .catch((err) => console.log(err));
