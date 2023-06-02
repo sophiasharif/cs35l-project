@@ -1,14 +1,16 @@
-const { getAllResponses } = require("../controllers/surveyController");
-
-const target = getCurrentUser(); // to be finished
-  
-async function runMatchingAlgorithm(target) {
+export async function matchingAlgorithm(targetName) {
   try {
     // Retrieve all results from the database
-    const responses = await getAllResponses();
+    const responses = await fetch("http://localhost:3000/api/survey/", {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+
+    target = responses.find(response => response.name === targetName);
 
     // Perform the matching algorithm with the results and target person
-    matchResults(responses, target);
+    return matchResults(responses, target);
   } catch (error) {
     // Handle any errors that occurred during the retrieval
     console.error(error);
@@ -17,30 +19,17 @@ async function runMatchingAlgorithm(target) {
 }
 
 function matchResults(responses, target) {
-  let match = {
-    result: null,
-    score: 0
-  };
 
   for (const response of responses) {
-    if (response.name === target.name) {
-      continue;  // Skip matching with the target itself
-    }
-
     // Compare the relevant fields and calculate matching score
-    const score = calculateMatchingScore(response, target);
-
-    if (score > match.score) {
-      match.result = response;
-      match.score = score;
-    }
+    response.score = calculateMatchingScore(response, target);
   }
 
-  if (match.result === null) {
-    throw new Error('No match found.');
-  }
+  responses.sort((a, b) => b.score - a.score);
 
-  return match;
+  responses.splice(responses.length - 1, 1);
+
+  return responses;
 }
 
 
@@ -48,7 +37,7 @@ function calculateMatchingScore(result, target) {
   let score = 0;
 
   if(result['name'] === target['name'] && result['email'] === target['email']) {
-    return 0;
+    return -1;
   }
 
   for (let answer in target) {
@@ -63,4 +52,3 @@ function calculateMatchingScore(result, target) {
 
   return score;
 }
-
