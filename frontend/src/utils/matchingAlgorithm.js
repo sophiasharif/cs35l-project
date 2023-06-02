@@ -4,7 +4,7 @@ export async function matchingAlgorithm(targetName) {
     const responses = await fetch("http://localhost:3000/api/survey/", {
       method: "GET",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ email, password, q1, q2, q3, q4, q5, q6, q7 }),
     });
 
     target = responses.find(response => response.name === targetName);
