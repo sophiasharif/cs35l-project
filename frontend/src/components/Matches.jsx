@@ -12,7 +12,7 @@ const Matches = (props) => {
 
   // TODO: Actually get users (name, email, compscore) from Backend
   const { user } = useAuthContext();
-  const matchResult = matchingAlgorithm(user.name);
+  const matchResult = matchingAlgorithm(user.email);
   
   const [matchData, setMatchData] = useState(matchResult);
   
