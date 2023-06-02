@@ -16,7 +16,7 @@ const Signup = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [passwordMatch, setPasswordMatch] = useState(true);
   const [name, setName] = useState("");
-  const {signup, error, isLoading} = useSignup();
+  const {signup, isLoading, error} = useSignup();
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
