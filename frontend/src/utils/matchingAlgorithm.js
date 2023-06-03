@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-// import { useResults } from "../hooks/useResults";
 import { useResponse } from "../hooks/useResponse";
 
 export function matchingAlgorithm(responses) {
+  if (!responses)
+    return;
+    
   const { response } = useResponse();
   const [matchedResponses, setMatchedResponses] = useState([]);
 
@@ -18,7 +20,6 @@ export function matchingAlgorithm(responses) {
         setMatchedResponses([]);
       }
     };
-
     fetchData();
   }, [response]);
 
