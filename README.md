@@ -20,7 +20,7 @@ $ npm install
 $ cd ../backend
 $ npm install
 ```
-Next, create  a `.env` file in the `backend` directory.  This file protects sensitive information like the port number, credentials to connect to MongoDB, and a secret key used for hashing and verifying JSON web tokens stored in the user’s browser. These are the required contents:
+Next, create  a `.env` file in the `backend` directory.  This file protects sensitive information like the port number, credentials to connect to MongoDB, and a secret key used for hashing and verifying JSON web tokens stored in the user’s browser. Paste this in and fill out the fields:
 ```
 # Port number for backend server
 PORT=3000
@@ -33,13 +33,13 @@ SECRET=<replace-with-secure-secret-key>
 ```
 
 ### Running the Servers
-The project set up is complete! To run the frontend and backend servers, just type the following commands:
-Start backend server:
+The project set up is complete! The frontend and backend servers must be two separate processes, so open two separate shell windows and change into the `friemacs` directory. 
+In one shell window, run the following commands to start the backend server:
 ```
 $ cd backend
 $ node server
 ```
-Start the frontend server:
+In the other shell window, run these commands to start the frontend server:
 ```
 $ cd frontend
 $ npm run dev
