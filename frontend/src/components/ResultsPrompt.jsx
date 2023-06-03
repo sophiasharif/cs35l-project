@@ -5,7 +5,7 @@ const ResultsPrompt = (props) => {
   if (!props.matchesToDisplay) {
     return(
       <>
-        <h3>Let's find some friends for you</h3>
+        <h3>Let's find some friends for you!</h3>
         <button onClick={props.obtainResponses}>Start Making Friends</button>
         <br></br><br></br>
       </>
@@ -14,7 +14,7 @@ const ResultsPrompt = (props) => {
   else if (parseInt(props.matchesToDisplay) >= parseInt(props.maxMatches)) {
     return(
       <>
-        <h3>Here's {props.matchesToDisplay} people we found for you to befriend!</h3>
+        <h3>Friends found!  Here's {props.matchesToDisplay} people we found for you to befriend:</h3>
         <h4>If you're not satisfied with your results, try adjusting your survey responses to better correlate with your core beliefs.</h4>
       </>
     );
@@ -22,7 +22,7 @@ const ResultsPrompt = (props) => {
   else {
     return(
       <>
-        <h3>Here's {props.matchesToDisplay} people we found for you to befriend!</h3>
+        <h3>Friends found! Here's {props.matchesToDisplay} people we found for you to befriend:</h3>
         <button onClick={props.obtainResponses}>Load More Friends</button>
         <br></br><br></br>
       </>

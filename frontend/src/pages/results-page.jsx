@@ -30,7 +30,7 @@ function Results () {
               {user && (
                 <div>
                   <ResultsPrompt matchesToDisplay={matchesToDisplay} obtainResponses={obtainResponses} maxMatches={maxMatches} />
-                  <Matches matchesToDisplay={matchesToDisplay} responses={responses} />
+                  <Matches matchesToDisplay={matchesToDisplay} responses={responses} maxscore={8} />
                 </div>
               )}
               {!user && (
