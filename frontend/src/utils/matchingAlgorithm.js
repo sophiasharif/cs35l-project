@@ -45,7 +45,7 @@ function calculateMatchingScore(result, target) {
   }
 
   for (let answer in target) {
-    if (answer === "name" || answer === "email") {
+    if (answer === "name" || answer === "email" || answer === '_id' || answer === '__v') {
       continue;
     }
 

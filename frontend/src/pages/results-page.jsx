@@ -15,6 +15,7 @@ function Results () {
     const {user} = useAuthContext();
     const matchIncrement = 3;
     const maxMatches = matchIncrement*4;
+    const maxCompatibility = 7;
     
     // Get all responses from Backend
     const {result, isLoading, error} = useResults();
@@ -30,7 +31,7 @@ function Results () {
               {user && (
                 <div>
                   <ResultsPrompt matchesToDisplay={matchesToDisplay} obtainResponses={obtainResponses} maxMatches={maxMatches} />
-                  <Matches matchesToDisplay={matchesToDisplay} responses={responses} maxscore={8} />
+                  <Matches matchesToDisplay={matchesToDisplay} responses={responses} maxscore={parseInt(maxCompatibility)} />
                 </div>
               )}
               {!user && (
