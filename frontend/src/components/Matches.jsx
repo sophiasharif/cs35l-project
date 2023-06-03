@@ -7,8 +7,11 @@ const Matches = (props) => {
   const numMatches = props.matchesToDisplay; // Set to however many matches to print on Results page
                      // any nonnegative int is allowed regardless of how many users in backend
   let responses = props.responses; // An array of User JSONs, access Users with responses[0], etc. 
-  let rankedMatches = matchingAlgorithm(responses);
-  let matchData = rankedMatches;
+  let matchData = {};
+  if (responses)
+  {
+    matchData = matchingAlgorithm(responses);
+  }
 
   const oneMatch = (matchNum) => {
     return (
@@ -24,16 +27,20 @@ const Matches = (props) => {
   }
 
   const nMatches = [];
+  let matchNotFound = 0;
 
-  for (let i = 1; i <= numMatches; i++) {
+  for (let i = 0; i < numMatches; i++) {
     if (matchData[i])
       nMatches.push(oneMatch(i));
     else
     {
       nMatches.push(<Match name="" email="" compscore={0} maxscore={props.maxscore} mykey={i} key={i} />)
+      matchNotFound = 1;
       break;
     }
   }
+  // Display "Found N matches" rather than "Found 12 matches" if N < 12   
+  props.setSuccessfulMatches(nMatches.length - matchNotFound) 
 
   return(
       <table>

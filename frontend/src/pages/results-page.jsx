@@ -12,6 +12,7 @@ function Results () {
     // Variables
     const [matchesToDisplay, setMatchesToDisplay] = useState(0);
     const [responses, setResponses] = useState({});
+    const [successfulMatches, setSuccessfulMatches] = useState(matchesToDisplay)
     const {user} = useAuthContext();
     const matchIncrement = 3;
     const maxMatches = matchIncrement*4;
@@ -30,8 +31,8 @@ function Results () {
               <h2>FrieMacS: Results</h2> 
               {user && (
                 <div>
-                  <ResultsPrompt matchesToDisplay={matchesToDisplay} obtainResponses={obtainResponses} maxMatches={maxMatches} />
-                  <Matches matchesToDisplay={matchesToDisplay} responses={responses} maxscore={parseInt(maxCompatibility)} />
+                  <ResultsPrompt successfulMatches={successfulMatches} obtainResponses={obtainResponses} maxMatches={maxMatches} />
+                  <Matches matchesToDisplay={matchesToDisplay} responses={responses} maxscore={parseInt(maxCompatibility)} setSuccessfulMatches={setSuccessfulMatches}/>
                 </div>
               )}
               {!user && (
