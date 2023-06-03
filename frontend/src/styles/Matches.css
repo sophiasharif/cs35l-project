@@ -1,17 +1,35 @@
-#matchTable {
-    padding: 3em;
-    margin-bottom: 1em;
-    border-color: transparent;
-    table-layout: fixed;
-    text-align: center;
-}
-
 table {
+    padding-left: 3em;
+    padding-right: 3em;
+    margin-bottom: 1em;
+    color: black;
+    border-color: transparent;
     width: 100%;
-    color: white;
+    table-layout: fixed;
+    text-align: center;  
+    align-self: center;
 }
 
 th, td {
-    border: 1px solid white;
-    color: white;
+    border: 1px solid black;
+    border-radius: 1em;
+    background-color: white;
+    color: black;
+    padding: 0.5em;
+}
+
+@keyframes color-change {
+    0% { color :  #ff2db9}    10% { color : #ba43ff }    20% { color : #683ffc}     30% { color : #4545f9} 
+    40% { color : #34a7ff}    50% { color : #3EDEBF }    60% { color:  #3ede4e }    70% { color : #f0dd05 }
+    80% { color : #f96c14 }   90% { color : #ff3c00 }    100% { color : #ff0051 }
+}
+
+.name {
+    animation: color-change 10s infinite;
+    font-weight: bold;
+}
+
+.email {
+    animation: color-change 10s infinite;
+    font-weight: bold;
 }

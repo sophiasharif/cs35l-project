@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react";
-import { useResults } from "../hooks/useResults";
+// import { useResults } from "../hooks/useResults";
 import { useResponse } from "../hooks/useResponse";
 
-export function matchingAlgorithm() {
-  const { result } = useResults();
+export function matchingAlgorithm(responses) {
   const { response } = useResponse();
   const [matchedResponses, setMatchedResponses] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const responses = await result();
         const target = await response();
 
         const processedResponses = matchResults(responses, target);
@@ -22,7 +20,7 @@ export function matchingAlgorithm() {
     };
 
     fetchData();
-  }, [result, response]);
+  }, [response]);
 
   return matchedResponses;
 }
@@ -47,7 +45,7 @@ function calculateMatchingScore(result, target) {
   }
 
   for (let answer in target) {
-    if (answer === "name" || answer === "email") {
+    if (answer === "name" || answer === "email" || answer === '_id' || answer === '__v') {
       continue;
     }
 
