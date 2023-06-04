@@ -32,9 +32,19 @@ th, td {
 .email {
     animation: color-change 10s infinite;
     font-weight: bold;
+    opacity: 1;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 #results-subheader {
     margin-bottom: 0em;
+}
+
+.results-additionalinfo {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
 }
 

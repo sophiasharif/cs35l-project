@@ -1,5 +1,6 @@
 import '../styles/Matches.css';
 import Match from './Match.jsx';
+import NoMatch from './NoMatch.jsx';
 import { matchingAlgorithm } from '../utils/matchingAlgorithm';
 
 const Matches = (props) => {
@@ -11,6 +12,8 @@ const Matches = (props) => {
   if (responses)
   {
     matchData = matchingAlgorithm(responses);
+    if (!matchData)
+      matchData = {};
   }
 
   const oneMatch = (matchNum) => {
@@ -26,25 +29,27 @@ const Matches = (props) => {
     );
   }
 
-  const nMatches = [];
+  const MatchTable = [];
   let matchNotFound = 0;
 
   for (let i = 0; i < numMatches; i++) {
     if (matchData[i])
-      nMatches.push(oneMatch(i));
+    {
+      MatchTable.push(oneMatch(i));
+    }
     else
     {
-      nMatches.push(<Match name="" email="" compscore={0} maxscore={props.maxscore} mykey={i} key={i} />)
+      MatchTable.push(<NoMatch key={i} />)
       matchNotFound = 1;
       break;
     }
   }
   // Display "Found N matches" rather than "Found 12 matches" if N < 12   
-  props.setSuccessfulMatches(nMatches.length - matchNotFound) 
+  props.setSuccessfulMatches(MatchTable.length - matchNotFound) 
 
   return(
       <table>
-        {nMatches}
+        {MatchTable}
       </table>
   );
 }

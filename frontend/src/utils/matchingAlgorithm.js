@@ -27,6 +27,11 @@ export function matchingAlgorithm(responses) {
 }
 
 function matchResults(responses, target) {
+  // Return immediately if the length of the responses object is undefined 
+  // (I.e. the wrong type of object has been passed to this function)
+  if ((typeof(responses.length)) === (typeof(undefined)))
+    return {}; // <Matches/> component demands an empty array if no matches are found
+
   const processedResponses = responses.map((res) => ({
     ...res,
     compscore: calculateMatchingScore(res, target),
@@ -39,11 +44,10 @@ function matchResults(responses, target) {
 }
 
 function calculateMatchingScore(result, target) {
-  let score = 0;
-
   if (result.name === target.name && result.email === target.email) {
     return -1;
   }
+  let score = 0;
 
   for (let answer in target) {
     if (answer === "name" || answer === "email" || answer === '_id' || answer === '__v') {
