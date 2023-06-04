@@ -109,7 +109,7 @@ const Form = () => {
       let resJson = await res.json();
       if (res.status === 200) {
         alert(
-          "Thanks for submitting the CS35l friendship matching form! Results will come out soon!"
+          "Thanks for submitting the CS35l friendship matching form! Your matches are available in the Results page."
         );
       } else {
         alert("An error occurred when submitting your form!");
