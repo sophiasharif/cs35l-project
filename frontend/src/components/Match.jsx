@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import '../styles/Matches.css';
 
 function compatibilityColor (score) {
@@ -25,35 +25,23 @@ function compatibilityColor (score) {
 function Match (props) {
   // Props: name, email, compscore, maxscore, mykey
   const compPercent = (parseInt(props.compscore))/(parseInt(props.maxscore));
-  const backgroundcolor = compatibilityColor(compPercent);
   const compatibilityStyle = {
-    "background-color": backgroundcolor,
+    "backgroundColor": compatibilityColor(compPercent),
   };
 
   const friendly = [" pal", " buddy", " friend", "n acquaintance", "n associate"]
   const lazyhash = props.mykey * parseInt(props.name.length*parseInt(props.compscore)+props.email.length*parseInt(props.compscore));
 
-  if (props.compscore != 0) {
-    return(
-      <tr>
-        <td colSpan={2}>
-          Need a{friendly[lazyhash % friendly.length]}? Reach out to <span className="name">{props.name}</span> at <span className="email">{props.email}</span>
-        </td>
-        <td style={compatibilityStyle}>
-          You and {props.name} are {(Math.round(compPercent * 100))}% compatible!
-        </td>
-      </tr>
-    );
-  }
-  else {
-    return(
-      <tr>
-        <td colSpan={3}>
-          Looking for matches. . . 
-        </td>
-      </tr>
-    );
-  }
+  return(
+    <tr>
+      <td colSpan={2}>
+        Need a{friendly[lazyhash % friendly.length]}? Reach out to <span className="name">{props.name}</span> at <a href={"mailto:" + props.email} className="email">{props.email}</a>
+      </td>
+      <td style={compatibilityStyle}>
+        You and {props.name} are {(Math.round(compPercent * 100))}% compatible!
+      </td>
+    </tr>
+  );
 }
 
 export default Match;

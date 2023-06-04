@@ -9,7 +9,7 @@ function Results () {
     document.title = "FriEMaCS - Results";
   }, []);
 
-    // Variables
+    // Constants
     const [matchesToDisplay, setMatchesToDisplay] = useState(0);
     const [responses, setResponses] = useState({});
     const [successfulMatches, setSuccessfulMatches] = useState(matchesToDisplay)
@@ -28,7 +28,7 @@ function Results () {
 
       return (
           <div>
-              <h2>FrieMacS: Results</h2> 
+              <h2>FriEMaCS: Results</h2> 
               {user && (
                 <div>
                   <ResultsPrompt successfulMatches={successfulMatches} obtainResponses={obtainResponses} maxMatches={maxMatches} />
