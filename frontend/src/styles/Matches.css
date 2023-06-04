@@ -33,3 +33,8 @@ th, td {
     animation: color-change 10s infinite;
     font-weight: bold;
 }
+
+#results-subheader {
+    margin-bottom: 0em;
+}
+
