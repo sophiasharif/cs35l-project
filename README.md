@@ -46,6 +46,7 @@ MONGO_URI=<replace-with-connection-string>
 # Secret key to hash JSON web tokens
 SECRET=<replace-with-secure-secret-key>
 ```
+(Note that usually you need to plug in your own MongoDB, if want to test on our deployed server, please send an email requiring for a testing credential and our secret key)
 
 ### Running the Servers
 The project set up is complete! The frontend and backend servers must be two separate processes, so open two separate shell windows and change into the `friemacs` directory. 
