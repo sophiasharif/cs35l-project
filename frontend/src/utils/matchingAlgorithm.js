@@ -21,7 +21,7 @@ export function matchingAlgorithm(responses) {
       }
     };
     fetchData();
-  }, [response]);
+  }, [responses]);
 
   return matchedResponses;
 }
