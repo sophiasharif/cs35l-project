@@ -1,8 +1,23 @@
 # FriEMaCS
 Friends for Engineering, Mathematics, and Computer Science Students
 
+## Table of Contents
+- [Project Overview](#project-overview)
+- [Prerequisites](#prerequisites)
+- [Running the Project Locally](#running-the-project-locally)
+  - [Set up](#set-up)
+  - [Running the Servers](#running-the-servers)
+
 ## Project Overview
 FriEMaCS is a survey of seven questions carefully designed to reveal the deepest parts of STEM students’ psyche. After students submit their responses, an advanced, state-of-the-art algorithm meticulously curates matches. FriEMaCS uses the latest psychological research to 100% guarantee optimal matches out of the pool of responses.
+
+<div align="center">
+  <img src="https://github.com/sophiasharif/friemacs/assets/57047003/314a6cb5-f4c8-4f4b-b887-663aba394111" alt="Screenshot 1" width="800">
+</div>
+
+<div align="center">
+  <img src="https://github.com/sophiasharif/friemacs/assets/57047003/9baf0baa-a0c4-4242-9cab-c8c710b1592d" alt="Screenshot 2" width="800">
+</div>
 
 ## Prerequisites
 Make sure you have the following services set up before following the instructions below:
