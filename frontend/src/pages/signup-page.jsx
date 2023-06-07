@@ -43,14 +43,9 @@ const Signup = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     await signup(name, email, password);
-
-    if (!error) {
-      alert("Congrats! You've successfully signed up for FriEMaCS.");
-    }
-    
   };
+    
 
   return (
     <div>
